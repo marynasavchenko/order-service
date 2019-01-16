@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+//TODO add fields for customer
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor(access= AccessLevel.PRIVATE, force=true)
