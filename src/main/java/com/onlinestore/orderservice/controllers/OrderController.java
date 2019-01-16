@@ -21,8 +21,9 @@ public class OrderController {
 		this.orderService = orderService;
 	}
 
-	@GetMapping("/{customerId}")
+	@GetMapping
 	public List<Order> getOrdersByCustomer(@PathVariable("customerId") String customerId) {
 		return orderService.getOrdersByCustomerId(customerId);
 	}
+
 }
