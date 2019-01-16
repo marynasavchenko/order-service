@@ -1,17 +1,16 @@
 package com.onlinestore.orderservice.model;
 
-import java.math.BigDecimal;
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class Order {
 	private String orderId;
 	private String customerId;
 	private Date orderDate;
 	private Date shippingDate;
 	private String orderStatus;
-	private BigDecimal orderTotal;
-
-	public Order() {
-	}
+	private boolean paid;
 
 }
