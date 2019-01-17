@@ -33,6 +33,11 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
+	public void updateOrder(Order order) {
+		orderRepository.save(order);
+	}
+
+	@Override
 	public void saveOrder(Order order) {
 		orderRepository.save(order);
 	}
