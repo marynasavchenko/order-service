@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+//TODO add methods update, delete, save
 @RestController
 @RequestMapping(value = "v1/customers/{customerId}/orders")
 public class OrderController {
@@ -21,9 +22,16 @@ public class OrderController {
 		this.orderService = orderService;
 	}
 
-	@GetMapping
-	public List<Order> getOrdersByCustomer(@PathVariable("customerId") String customerId) {
+	@GetMapping(value = "/")
+	public List<Order> getOrdersWithCustomer(@PathVariable("customerId") String customerId) {
 		return orderService.getOrdersByCustomerId(customerId);
 	}
+
+	@GetMapping(value = "/{orderId}")
+	public Order getOrder(@PathVariable("customerId") String customerId,
+	                                  @PathVariable("orderId") String orderId) {
+		return orderService.getOrder(customerId, orderId);
+	}
+
 
 }
