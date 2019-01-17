@@ -30,7 +30,7 @@ public class OrderController {
 		return orderService.getOrder(customerId, orderId);
 	}
 
-	@PutMapping(value = "")
+	@PutMapping(value = "/{orderId}")
 	public void updateOrder(@PathVariable("orderId") String orderId,
 	                        @RequestBody Order order) {
 		orderService.updateOrder(order);
