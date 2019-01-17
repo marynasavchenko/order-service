@@ -11,11 +11,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.Mockito.verify;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-//TODO updateOrder, saveOrder, deleteOrder
+//TODO saveOrder, deleteOrder
 @RunWith(SpringRunner.class)
 @WebMvcTest
 public class OrderControllerTest {
@@ -44,9 +43,17 @@ public class OrderControllerTest {
 		mockMvc.perform(get(MAIN_URI+"/" + ANY_ORDER_ID)).andExpect(status().isOk());
 		verify(orderService).getOrder(ANY_CUSTOMER_ID, ANY_ORDER_ID);
 	}
+
 	@Test
 	public void shouldUpdateOrder() throws Exception {
-		mockMvc.perform(post(MAIN_URI+"/" + ANY_ORDER_ID)).andExpect(status().isOk());
+		mockMvc.perform(put(MAIN_URI+"/" + ANY_ORDER_ID)).andExpect(status().isOk());
 		verify(orderService).updateOrder(order);
 	}
+
+	@Test
+	public void shouldSaveOrder() throws Exception {
+		mockMvc.perform(post(MAIN_URI+"/")).andExpect(status().isOk());
+		verify(orderService).saveOrder(order);
+	}
+
 }
