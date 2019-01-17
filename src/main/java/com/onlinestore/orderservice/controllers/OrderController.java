@@ -36,5 +36,9 @@ public class OrderController {
 		orderService.updateOrder(order);
 	}
 
+	@PostMapping(value = "/")
+	public void saveOrder(@RequestBody Order order) {
+		orderService.saveOrder(order);
+	}
 
 }
