@@ -13,7 +13,7 @@ import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-//TODO getOrdersWithCustomer, getOrder, updateOrder, saveOrder, deleteOrder
+//TODO getOrder, updateOrder, saveOrder, deleteOrder
 @RunWith(SpringRunner.class)
 @WebMvcTest
 public class OrderControllerTest {
@@ -32,5 +32,11 @@ public class OrderControllerTest {
 	public void shouldGetOrdersWithCustomer() throws Exception {
 		mockMvc.perform(get(MAIN_URI+"/")).andExpect(status().isOk());
 		verify(orderService).getOrdersByCustomerId(ANY_CUSTOMER_ID);
+	}
+
+	@Test
+	public void shouldGetOrder() throws Exception {
+		mockMvc.perform(get(MAIN_URI+"/" + ANY_ORDER_ID)).andExpect(status().isOk());
+		verify(orderService).getOrder(ANY_CUSTOMER_ID, ANY_ORDER_ID);
 	}
 }
