@@ -14,7 +14,6 @@ import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-//TODO saveOrder, deleteOrder
 @RunWith(SpringRunner.class)
 @WebMvcTest
 public class OrderControllerTest {
@@ -56,4 +55,9 @@ public class OrderControllerTest {
 		verify(orderService).saveOrder(order);
 	}
 
+	@Test
+	public void shouldDeleteOrder() throws Exception {
+		mockMvc.perform(delete(MAIN_URI+"/")).andExpect(status().isNoContent());
+		verify(orderService).deleteOrder(order);
+	}
 }
