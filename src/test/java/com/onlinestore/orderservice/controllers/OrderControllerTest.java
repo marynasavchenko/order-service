@@ -1,5 +1,6 @@
 package com.onlinestore.orderservice.controllers;
 
+import com.onlinestore.orderservice.model.Order;
 import com.onlinestore.orderservice.services.OrderService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,9 +12,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-//TODO getOrder, updateOrder, saveOrder, deleteOrder
+//TODO updateOrder, saveOrder, deleteOrder
 @RunWith(SpringRunner.class)
 @WebMvcTest
 public class OrderControllerTest {
@@ -24,6 +26,9 @@ public class OrderControllerTest {
 
 	@MockBean
 	private OrderService orderService;
+
+	@MockBean
+	private Order order;
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -38,5 +43,10 @@ public class OrderControllerTest {
 	public void shouldGetOrder() throws Exception {
 		mockMvc.perform(get(MAIN_URI+"/" + ANY_ORDER_ID)).andExpect(status().isOk());
 		verify(orderService).getOrder(ANY_CUSTOMER_ID, ANY_ORDER_ID);
+	}
+	@Test
+	public void shouldUpdateOrder() throws Exception {
+		mockMvc.perform(post(MAIN_URI+"/" + ANY_ORDER_ID)).andExpect(status().isOk());
+		verify(orderService).updateOrder(order);
 	}
 }
