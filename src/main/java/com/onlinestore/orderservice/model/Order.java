@@ -1,8 +1,6 @@
 package com.onlinestore.orderservice.model;
 
-import lombok.AccessLevel;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
@@ -12,8 +10,8 @@ import java.util.List;
 
 //TODO add fields for customer
 @Data
+//@NoArgsConstructor(access= AccessLevel.PRIVATE, force=true)
 @RequiredArgsConstructor
-@NoArgsConstructor(access= AccessLevel.PRIVATE, force=true)
 @Entity
 @Table(name="orders")
 public class Order {
