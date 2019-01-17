@@ -3,11 +3,11 @@ package com.onlinestore.orderservice.controllers;
 import com.onlinestore.orderservice.model.Order;
 import com.onlinestore.orderservice.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//TODO add methods delete, save
 @RestController
 @RequestMapping(value = "v1/customers/{customerId}/orders")
 public class OrderController {
@@ -41,4 +41,10 @@ public class OrderController {
 		orderService.saveOrder(order);
 	}
 
+	@DeleteMapping(value = "/{orderId}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deleteOrder(@PathVariable("orderId") String orderId,
+	                        @RequestBody Order order) {
+		orderService.deleteOrder(order);
+	}
 }
