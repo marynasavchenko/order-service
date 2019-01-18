@@ -1,16 +1,17 @@
 package com.onlinestore.orderservice.model;
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 //TODO add fields for customer
 @Data
-//@NoArgsConstructor(access= AccessLevel.PRIVATE, force=true)
+@NoArgsConstructor(access= AccessLevel.PRIVATE, force=true)
 @RequiredArgsConstructor
 @Entity
 @Table(name="orders")
@@ -24,5 +25,10 @@ public class Order {
 	private Date orderDate;
 
 	private String orderStatus;
-	private List<ShoppingPosition> shoppingPositions = new ArrayList<>();
+
+	private BigDecimal orderTotal;
+
+	@Enumerated(EnumType.STRING)
+	private OrderState orderState;
+	//private List<ShoppingPosition> shoppingPositions = new ArrayList<>();
 }
