@@ -11,13 +11,13 @@ import java.util.Date;
 
 //TODO add fields for customer
 @Data
-@NoArgsConstructor(access= AccessLevel.PRIVATE, force=true)
+@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 @RequiredArgsConstructor
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 public class Order {
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String orderId;
 
 	private String customerId;
@@ -30,5 +30,7 @@ public class Order {
 
 	@Enumerated(EnumType.STRING)
 	private OrderState orderState;
-	//private List<ShoppingPosition> shoppingPositions = new ArrayList<>();
+
+	@Embedded
+	private ShoppingPositions shoppingPositions;
 }
