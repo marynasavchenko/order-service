@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public Order getOrder(String customerId, String orderId) {
+	public Order getOrder(String customerId, String orderId, String clientType) {
 		return orderRepository.findByCustomerIdAndOrderId(customerId, orderId);
 	}
 
