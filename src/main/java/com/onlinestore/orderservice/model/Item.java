@@ -1,7 +1,9 @@
 package com.onlinestore.orderservice.model;
 
+import javax.persistence.Embeddable;
 import java.util.Objects;
 
+@Embeddable
 public class Item {
 	private String itemId;
 	private String itemName;
