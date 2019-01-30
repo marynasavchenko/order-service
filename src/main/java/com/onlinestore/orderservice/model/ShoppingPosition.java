@@ -1,9 +1,14 @@
 package com.onlinestore.orderservice.model;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import java.math.BigDecimal;
 
+@Embeddable
 public class ShoppingPosition {
 	private String shoppingPositionId;
+
+	@Embedded
 	private Item item;
 	private int quantity;
 	private BigDecimal price;
