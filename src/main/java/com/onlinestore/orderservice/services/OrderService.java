@@ -10,5 +10,5 @@ public interface OrderService {
 	Order getOrder(String customerId, String orderId, String clientType);
 	void updateOrder(Order order);
 	void saveOrder(Order order);
-	void deleteOrder(Order order);
+	void deleteOrder(String orderId);
 }
