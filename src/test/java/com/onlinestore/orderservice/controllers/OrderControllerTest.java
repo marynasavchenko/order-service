@@ -10,6 +10,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -47,18 +48,18 @@ public class OrderControllerTest {
 	@Test
 	public void shouldUpdateOrder() throws Exception {
 		mockMvc.perform(put(MAIN_URI+ ANY_ORDER_ID)).andExpect(status().isOk());
-		//verify(orderService).updateOrder(order);
+		verify(orderService).updateOrder(any(Order.class));
 	}
 
 	@Test
 	public void shouldSaveOrder() throws Exception {
 		mockMvc.perform(post(MAIN_URI)).andExpect(status().isOk());
-		verify(orderService).saveOrder(order);
+		verify(orderService).saveOrder(any(Order.class));
 	}
 
 	@Test
 	public void shouldDeleteOrder() throws Exception {
 		mockMvc.perform(delete(MAIN_URI)).andExpect(status().isNoContent());
-		verify(orderService).deleteOrder(order);
+		verify(orderService).deleteOrder(any(Order.class));
 	}
 }
