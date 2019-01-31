@@ -59,7 +59,7 @@ public class OrderControllerTest {
 
 	@Test
 	public void shouldDeleteOrder() throws Exception {
-		mockMvc.perform(delete(MAIN_URI)).andExpect(status().isNoContent());
-		verify(orderService).deleteOrder(any(Order.class));
+		mockMvc.perform(delete(MAIN_URI+ ANY_ORDER_ID)).andExpect(status().isNoContent());
+		verify(orderService).deleteOrder(ANY_ORDER_ID);
 	}
 }
