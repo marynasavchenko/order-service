@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "v1/customers/{customerId}/orders")
+@RequestMapping(value = "/v1/customers/{customerId}/orders")
 public class OrderController {
 
 	private OrderService orderService;
