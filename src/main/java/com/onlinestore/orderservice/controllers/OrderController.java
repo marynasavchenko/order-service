@@ -33,19 +33,19 @@ public class OrderController {
 
 	@PutMapping(value = "/{orderId}")
 	public void updateOrder(@PathVariable("orderId") String orderId,
-	                        @RequestBody Order order) {
+	                        Order order) {
 		orderService.updateOrder(order);
 	}
 
 	@PostMapping(value = "/")
-	public void saveOrder(@RequestBody Order order) {
+	public void saveOrder(Order order) {
 		orderService.saveOrder(order);
 	}
 
 	@DeleteMapping(value = "/{orderId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteOrder(@PathVariable("orderId") String orderId,
-	                        @RequestBody Order order) {
+	                        Order order) {
 		orderService.deleteOrder(order);
 	}
 }
