@@ -39,5 +39,4 @@ public class CustomerDiscoveryClient {
 		return responseEntity.getBody();
 	}
 
-
 }
