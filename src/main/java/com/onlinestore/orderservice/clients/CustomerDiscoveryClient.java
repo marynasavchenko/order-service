@@ -27,16 +27,16 @@ public class CustomerDiscoveryClient {
 
 	public Customer getCustomer(String customerId) {
 		List<ServiceInstance> serviceInstances = discoveryClient.getInstances("customerservice");
+
 		if (serviceInstances.size() == 0) return null;
 		String serviceUri = String.format("%s/v1/customers/%s", serviceInstances.get(0).getUri().toString(), customerId);
 
-		ResponseEntity<Customer> restExchange =
-				restTemplate.exchange(
+		ResponseEntity<Customer> responseEntity = restTemplate.exchange(
 						serviceUri,
 						HttpMethod.GET,
 						null, Customer.class, customerId);
 
-		return restExchange.getBody();
+		return responseEntity.getBody();
 	}
 
 
