@@ -101,6 +101,29 @@ public class Order {
 		this.shoppingPositions = shoppingPositions;
 	}
 
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	public void setCustomerAddress(String customerAddress) {
+		this.customerAddress = customerAddress;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public String getCustomerAddress() {
+		return customerAddress;
+	}
+
+	public Order withCustomerName(String customerName) {
+		this.customerName=customerName;
+		return this;
+	}
+
+
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
