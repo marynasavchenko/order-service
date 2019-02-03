@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @Component
-public class CustomerDiscoveryClient {
+public class CustomerDiscoveryClient implements Client {
 
 	private DiscoveryClient discoveryClient;
 
@@ -25,6 +25,7 @@ public class CustomerDiscoveryClient {
 		this.restTemplate = restTemplateBuilder.build();
 	}
 
+	@Override
 	public Customer getCustomer(String customerId) {
 		List<ServiceInstance> serviceInstances = discoveryClient.getInstances("customerservice");
 
@@ -32,9 +33,9 @@ public class CustomerDiscoveryClient {
 		String serviceUri = String.format("%s/v1/customers/%s", serviceInstances.get(0).getUri().toString(), customerId);
 
 		ResponseEntity<Customer> responseEntity = restTemplate.exchange(
-						serviceUri,
-						HttpMethod.GET,
-						null, Customer.class, customerId);
+				serviceUri,
+				HttpMethod.GET,
+				null, Customer.class, customerId);
 
 		return responseEntity.getBody();
 	}
