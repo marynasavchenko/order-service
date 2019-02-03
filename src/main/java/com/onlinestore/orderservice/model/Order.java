@@ -122,7 +122,10 @@ public class Order {
 		return this;
 	}
 
-
+	public Order withCustomerAddress(String customerAddress) {
+		this.customerAddress=customerAddress;
+		return this;
+	}
 
 	@Override
 	public boolean equals(Object o) {
