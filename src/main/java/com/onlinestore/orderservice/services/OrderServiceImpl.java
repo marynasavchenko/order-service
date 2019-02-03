@@ -39,7 +39,11 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Order getOrder(String customerId, String orderId, String clientType) {
-		return orderRepository.findByCustomerIdAndOrderId(customerId, orderId);
+		Order order = orderRepository.findByCustomerIdAndOrderId(customerId, orderId);
+		Customer customer = getCustomerInfo(customerId);
+		order.withCustomerName(customer.getCustomerName())
+				.withCustomerAddress(customer.getCustomerAddress());
+		return order;
 	}
 
 	@Override
