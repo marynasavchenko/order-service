@@ -1,20 +1,30 @@
 package com.onlinestore.orderservice.services;
 
+import com.onlinestore.orderservice.clients.Client;
+import com.onlinestore.orderservice.model.Customer;
 import com.onlinestore.orderservice.model.Order;
 import com.onlinestore.orderservice.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-//TODO add method to retrieve Customer info
+
+//TODO add @Qualifier for clientType?
 @Service
 public class OrderServiceImpl implements OrderService {
+
+	private Client customerClient;
 
 	private OrderRepository orderRepository;
 
 	@Autowired
-	public OrderServiceImpl(OrderRepository orderRepository) {
+	public OrderServiceImpl(OrderRepository orderRepository, Client customerClient) {
 		this.orderRepository = orderRepository;
+		this.customerClient = customerClient;
+	}
+
+	private Customer getCustomerInfo(String customerId) {
+		return customerClient.getCustomer(customerId);
 	}
 
 	@Override
