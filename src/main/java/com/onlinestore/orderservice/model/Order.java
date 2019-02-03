@@ -14,6 +14,12 @@ public class Order {
 
 	private String customerId;
 
+	@Transient
+	private String customerName;
+
+	@Transient
+	private String customerAddress;
+
 	private Date orderDate;
 
 	private String orderStatus;
