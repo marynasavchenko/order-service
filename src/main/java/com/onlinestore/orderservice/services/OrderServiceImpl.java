@@ -1,5 +1,6 @@
 package com.onlinestore.orderservice.services;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.onlinestore.orderservice.clients.Client;
 import com.onlinestore.orderservice.model.Customer;
 import com.onlinestore.orderservice.model.Order;
@@ -33,6 +34,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
+	@HystrixCommand
 	public List<Order> getOrdersByCustomerId(String customerId) {
 		return orderRepository.findByCustomerId(customerId);
 	}
