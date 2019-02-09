@@ -36,15 +36,17 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	@HystrixCommand(fallbackMethod ="buildFallbackOrderList",
-			commandProperties = {@HystrixProperty(
-					name = "execution.isolation.thread.timeoutInMilliseconds",
+	@HystrixCommand(fallbackMethod = "buildFallbackOrderList",
+			threadPoolKey = "ordersByCustomerThreadPool",
+			threadPoolProperties = {@HystrixProperty(name = "coreSize", value = "30"),
+									@HystrixProperty(name = "maxQueueSize", value = "10")},
+			commandProperties = {@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",
 					value = "7000")})
 	public List<Order> getOrdersByCustomerId(String customerId) {
 		return orderRepository.findByCustomerId(customerId);
 	}
 
-	private List<Order> buildFallbackOrderList(String customerId){
+	private List<Order> buildFallbackOrderList(String customerId) {
 		List<Order> fallbackList = new ArrayList<>();
 		Order order = new Order().withOrderStatus("No orders available");
 		fallbackList.add(order);
