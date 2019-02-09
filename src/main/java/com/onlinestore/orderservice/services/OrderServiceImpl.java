@@ -1,6 +1,7 @@
 package com.onlinestore.orderservice.services;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.onlinestore.orderservice.clients.Client;
 import com.onlinestore.orderservice.model.Customer;
 import com.onlinestore.orderservice.model.Order;
@@ -34,7 +35,10 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	@HystrixCommand
+	@HystrixCommand(commandProperties =
+			{@HystrixProperty(
+					name = "execution.isolation.thread.timeoutInMilliseconds",
+					value = "7000")})
 	public List<Order> getOrdersByCustomerId(String customerId) {
 		return orderRepository.findByCustomerId(customerId);
 	}
