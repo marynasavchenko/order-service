@@ -126,6 +126,10 @@ public class Order {
 		this.customerAddress=customerAddress;
 		return this;
 	}
+	public Order withOrderStatus(String orderStatus) {
+		this.orderStatus=orderStatus;
+		return this;
+	}
 
 	@Override
 	public boolean equals(Object o) {
