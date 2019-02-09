@@ -9,6 +9,7 @@ import com.onlinestore.orderservice.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //TODO add @Qualifier for clientType?
@@ -35,12 +36,19 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	@HystrixCommand(commandProperties =
-			{@HystrixProperty(
+	@HystrixCommand(fallbackMethod ="buildFallbackOrderList",
+			commandProperties = {@HystrixProperty(
 					name = "execution.isolation.thread.timeoutInMilliseconds",
 					value = "7000")})
 	public List<Order> getOrdersByCustomerId(String customerId) {
 		return orderRepository.findByCustomerId(customerId);
+	}
+
+	private List<Order> buildFallbackOrderList(String customerId){
+		List<Order> fallbackList = new ArrayList<>();
+		Order order = new Order().withOrderStatus("No orders available");
+		fallbackList.add(order);
+		return fallbackList;
 	}
 
 	@Override
