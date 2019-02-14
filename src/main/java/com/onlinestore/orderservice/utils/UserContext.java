@@ -1,5 +1,8 @@
 package com.onlinestore.orderservice.utils;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class UserContext {
 
 	public static final String CORRELATION_ID = "onlst-correlation-id";
