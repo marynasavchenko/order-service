@@ -5,8 +5,10 @@ import com.netflix.hystrix.strategy.concurrency.HystrixConcurrencyStrategy;
 import com.netflix.hystrix.strategy.concurrency.HystrixRequestVariable;
 import com.netflix.hystrix.strategy.concurrency.HystrixRequestVariableLifecycle;
 import com.netflix.hystrix.strategy.properties.HystrixProperty;
+import com.onlinestore.orderservice.utils.UserContextHolder;
 
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -40,6 +42,13 @@ public class CustomHystrixConcurrencyStrategy extends HystrixConcurrencyStrategy
 		if (existingConcurrencyStrategy != null)
 			return existingConcurrencyStrategy.getThreadPool(threadPoolKey, corePoolSize, maxPoolSize, keepAliveTime, unit, workQueue);
 		return super.getThreadPool(threadPoolKey, corePoolSize, maxPoolSize, keepAliveTime, unit, workQueue);
+	}
+
+	@Override
+	public <T> Callable<T> wrapCallable(Callable<T> callable) {
+		if (existingConcurrencyStrategy != null)
+			return existingConcurrencyStrategy.wrapCallable(new DelegatingUserContextCallable<T>(callable, UserContextHolder.getContext()));
+		return super.wrapCallable(new DelegatingUserContextCallable<T>(callable, UserContextHolder.getContext()));
 	}
 
 }
