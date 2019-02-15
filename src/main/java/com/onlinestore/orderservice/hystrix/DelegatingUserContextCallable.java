@@ -1,6 +1,7 @@
 package com.onlinestore.orderservice.hystrix;
 
 import com.onlinestore.orderservice.utils.UserContext;
+import com.onlinestore.orderservice.utils.UserContextHolder;
 
 import java.util.concurrent.Callable;
 
@@ -16,7 +17,12 @@ public final class DelegatingUserContextCallable<V> implements Callable<V> {
 
 	@Override
 	public V call() throws Exception {
-		return null;
+		UserContextHolder.setContext(originalUserContext);
+		try {
+			return delegate.call();
+		} finally {
+			this.originalUserContext = null;
+		}
 	}
 
 	public static <V> Callable<V> create(Callable<V> delegate, UserContext userContext) {
