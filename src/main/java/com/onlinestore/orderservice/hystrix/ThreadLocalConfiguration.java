@@ -25,5 +25,13 @@ public class ThreadLocalConfiguration {
 		HystrixMetricsPublisher metricsPublisher = HystrixPlugins.getInstance().getMetricsPublisher();
 		HystrixPropertiesStrategy propertiesStrategy = HystrixPlugins.getInstance().getPropertiesStrategy();
 		HystrixCommandExecutionHook commandExecutionHook = HystrixPlugins.getInstance().getCommandExecutionHook();
+
+		HystrixPlugins.reset();
+
+		HystrixPlugins.getInstance().registerConcurrencyStrategy(new CustomHystrixConcurrencyStrategy(existingConcurrencyStrategy));
+		HystrixPlugins.getInstance().registerEventNotifier(eventNotifier);
+		HystrixPlugins.getInstance().registerMetricsPublisher(metricsPublisher);
+		HystrixPlugins.getInstance().registerPropertiesStrategy(propertiesStrategy);
+		HystrixPlugins.getInstance().registerCommandExecutionHook(commandExecutionHook);
 	}
 }
