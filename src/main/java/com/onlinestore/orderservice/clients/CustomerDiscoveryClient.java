@@ -2,7 +2,6 @@ package com.onlinestore.orderservice.clients;
 
 import com.onlinestore.orderservice.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpMethod;
@@ -20,9 +19,9 @@ public class CustomerDiscoveryClient implements Client {
 	private RestTemplate restTemplate;
 
 	@Autowired
-	public CustomerDiscoveryClient(DiscoveryClient discoveryClient, RestTemplateBuilder restTemplateBuilder) {
+	public CustomerDiscoveryClient(DiscoveryClient discoveryClient, RestTemplate restTemplate) {
 		this.discoveryClient = discoveryClient;
-		this.restTemplate = restTemplateBuilder.build();
+		this.restTemplate = restTemplate;
 	}
 
 	@Override
