@@ -7,11 +7,11 @@ import java.util.concurrent.Callable;
 
 public final class DelegatingUserContextCallable<V> implements Callable<V> {
 
-	private final Callable<V> delegate;
+	private final Callable<V> delegatedCallable;
 	private UserContext originalUserContext;
 
-	public DelegatingUserContextCallable(Callable<V> delegate, UserContext userContext) {
-		this.delegate = delegate;
+	public DelegatingUserContextCallable(Callable<V> delegatedCallable, UserContext userContext) {
+		this.delegatedCallable = delegatedCallable;
 		this.originalUserContext = userContext;
 	}
 
@@ -19,13 +19,13 @@ public final class DelegatingUserContextCallable<V> implements Callable<V> {
 	public V call() throws Exception {
 		UserContextHolder.setContext(originalUserContext);
 		try {
-			return delegate.call();
+			return delegatedCallable.call();
 		} finally {
 			this.originalUserContext = null;
 		}
 	}
 
-	public static <V> Callable<V> create(Callable<V> delegate, UserContext userContext) {
-		return new DelegatingUserContextCallable<V>(delegate, userContext);
+	public static <V> Callable<V> create(Callable<V> delegatedCallable, UserContext userContext) {
+		return new DelegatingUserContextCallable<>(delegatedCallable, userContext);
 	}
 }
