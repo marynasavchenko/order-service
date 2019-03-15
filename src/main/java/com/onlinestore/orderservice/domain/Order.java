@@ -1,4 +1,4 @@
-package com.onlinestore.orderservice.model;
+package com.onlinestore.orderservice.domain;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

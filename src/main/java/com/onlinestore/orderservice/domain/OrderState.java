@@ -1,4 +1,4 @@
-package com.onlinestore.orderservice.model;
+package com.onlinestore.orderservice.domain;
 
 public enum OrderState {
 	ACCEPTANCE_PENDING,

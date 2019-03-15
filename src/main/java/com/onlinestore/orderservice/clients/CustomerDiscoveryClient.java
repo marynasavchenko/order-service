@@ -1,6 +1,6 @@
 package com.onlinestore.orderservice.clients;
 
-import com.onlinestore.orderservice.model.Customer;
+import com.onlinestore.orderservice.domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;

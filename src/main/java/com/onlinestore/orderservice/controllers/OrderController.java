@@ -1,6 +1,6 @@
 package com.onlinestore.orderservice.controllers;
 
-import com.onlinestore.orderservice.model.Order;
+import com.onlinestore.orderservice.domain.Order;
 import com.onlinestore.orderservice.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

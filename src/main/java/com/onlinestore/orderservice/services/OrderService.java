@@ -1,6 +1,6 @@
 package com.onlinestore.orderservice.services;
 
-import com.onlinestore.orderservice.model.Order;
+import com.onlinestore.orderservice.domain.Order;
 
 import java.util.List;
 
