@@ -1,7 +1,7 @@
 package com.onlinestore.orderservice.hystrix;
 
-import com.onlinestore.orderservice.utils.UserContext;
-import com.onlinestore.orderservice.utils.UserContextHolder;
+import com.onlinestore.orderservice.contextinfoutils.UserContext;
+import com.onlinestore.orderservice.contextinfoutils.UserContextHolder;
 
 import java.util.concurrent.Callable;
 

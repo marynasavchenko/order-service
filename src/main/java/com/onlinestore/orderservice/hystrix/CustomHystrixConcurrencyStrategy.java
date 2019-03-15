@@ -5,7 +5,7 @@ import com.netflix.hystrix.strategy.concurrency.HystrixConcurrencyStrategy;
 import com.netflix.hystrix.strategy.concurrency.HystrixRequestVariable;
 import com.netflix.hystrix.strategy.concurrency.HystrixRequestVariableLifecycle;
 import com.netflix.hystrix.strategy.properties.HystrixProperty;
-import com.onlinestore.orderservice.utils.UserContextHolder;
+import com.onlinestore.orderservice.contextinfoutils.UserContextHolder;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;

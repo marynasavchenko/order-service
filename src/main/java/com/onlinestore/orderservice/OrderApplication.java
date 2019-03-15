@@ -1,6 +1,6 @@
 package com.onlinestore.orderservice;
 
-import com.onlinestore.orderservice.utils.UserContextInterceptor;
+import com.onlinestore.orderservice.contextinfoutils.UserContextInterceptor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;

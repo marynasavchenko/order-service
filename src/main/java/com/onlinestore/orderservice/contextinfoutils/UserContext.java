@@ -1,4 +1,4 @@
-package com.onlinestore.orderservice.utils;
+package com.onlinestore.orderservice.contextinfoutils;
 
 import org.springframework.stereotype.Component;
 
