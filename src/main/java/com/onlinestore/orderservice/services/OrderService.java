@@ -23,6 +23,13 @@ public interface OrderService {
 	 */
 	List<Order> getOrdersByCustomerId(String customerId);
 
+	/**
+	 * Gets specific order of specific customer.
+	 *
+	 * @param customerId the unique id of the customer
+	 * @param orderId    the unique id of the order
+	 * @return specific customers order
+	 */
 	Order getOrder(String customerId, String orderId);
 
 	/**
