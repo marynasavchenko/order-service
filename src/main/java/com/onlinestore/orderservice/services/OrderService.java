@@ -9,40 +9,40 @@ import java.util.List;
  */
 public interface OrderService {
 	/**
-	 * returns all orders of all customers.
+	 * Returns all orders of all customers.
 	 *
-	 * @return the list of orders of all customers.
+	 * @return the list of orders of all customers
 	 */
 	List<Order> getAllOrders();
 
 	/**
-	 * returns all orders of a customer, specified by customerId.
+	 * Returns all orders of a customer, specified by customerId.
 	 *
-	 * @param customerId the unique id of the customer.
-	 * @return the list of orders of one customer.
+	 * @param customerId the unique id of the customer
+	 * @return the list of orders of one customer
 	 */
 	List<Order> getOrdersByCustomerId(String customerId);
 
-	Order getOrder(String customerId, String orderId, String clientType);
+	Order getOrder(String customerId, String orderId);
 
 	/**
-	 * modifies an existing order.
+	 * Modifies an existing order.
 	 *
-	 * @param order an order to be modified.
+	 * @param order an order to be modified
 	 */
 	void updateOrder(Order order);
 
 	/**
-	 * saves new order.
+	 * Saves new order.
 	 *
-	 * @param order an order to be saved.
+	 * @param order an order to be saved
 	 */
 	void saveOrder(Order order);
 
 	/**
-	 * deletes an order.
+	 * Deletes an order.
 	 *
-	 * @param orderId the unique id of the order.
+	 * @param orderId the unique id of the order
 	 */
 	void deleteOrder(String orderId);
 }

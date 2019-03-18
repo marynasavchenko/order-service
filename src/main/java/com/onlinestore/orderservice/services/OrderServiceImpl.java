@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO add @Qualifier for clientType?
 @Service
 public class OrderServiceImpl implements OrderService {
 
@@ -54,7 +53,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public Order getOrder(String customerId, String orderId, String clientType) {
+	public Order getOrder(String customerId, String orderId) {
 		Order order = orderRepository.findByCustomerIdAndOrderId(customerId, orderId);
 		Customer customer = getCustomerInfo(customerId);
 		order.withCustomerName(customer.getCustomerName())
@@ -75,6 +74,5 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void deleteOrder(String orderId) {
 		orderRepository.deleteById(orderId);
-
 	}
 }
