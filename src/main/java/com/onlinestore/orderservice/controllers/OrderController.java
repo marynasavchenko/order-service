@@ -24,11 +24,10 @@ public class OrderController {
 		return orderService.getOrdersByCustomerId(customerId);
 	}
 
-	@GetMapping(value = "/{orderId}/{clientType}")
+	@GetMapping(value = "/{orderId}")
 	public Order getOrder(@PathVariable("customerId") String customerId,
-	                      @PathVariable("orderId") String orderId,
-	                      @PathVariable("clientType") String clientType) {
-		return orderService.getOrder(customerId, orderId, clientType);
+	                      @PathVariable("orderId") String orderId) {
+		return orderService.getOrder(customerId, orderId);
 	}
 
 	@PutMapping(value = "/{orderId}")
