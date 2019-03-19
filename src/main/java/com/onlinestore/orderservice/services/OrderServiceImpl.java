@@ -61,6 +61,11 @@ public class OrderServiceImpl implements OrderService {
 
 	/**
 	 * Gets all orders of the specific customer from database.
+	 * <p>
+	 * Implements simple fallback strategy. Fallback method is called if call from Hystrix fail.
+	 * <p>
+	 * Implements bulkhead strategy. Defines segregated thread pool with number of threads and queue size
+	 * for the number of requests that can queue if the individual threads are busy.
 	 *
 	 * @param customerId the unique id of the customer
 	 * @return list of orders of the specific customer
@@ -76,6 +81,12 @@ public class OrderServiceImpl implements OrderService {
 		return orderRepository.findByCustomerId(customerId);
 	}
 
+	/**
+	 * Helper method that builds order list for fallback strategy.
+	 *
+	 * @param customerId the unique id of the customer
+	 * @return fallback list of orders.
+	 */
 	private List<Order> buildFallbackOrderList(String customerId) {
 		List<Order> fallbackList = new ArrayList<>();
 		Order order = new Order().withOrderStatus("No orders available");
@@ -84,7 +95,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	/**
-	 * Gets specific order from database.
+	 * Gets specific order from database. Additional customer information added from customer service.
 	 *
 	 * @param customerId the unique id of the customer
 	 * @param orderId    the unique id of the order
