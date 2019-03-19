@@ -47,8 +47,8 @@ public class CustomHystrixConcurrencyStrategy extends HystrixConcurrencyStrategy
 	@Override
 	public <T> Callable<T> wrapCallable(Callable<T> callable) {
 		if (existingConcurrencyStrategy != null)
-			return existingConcurrencyStrategy.wrapCallable(new DelegatingUserContextCallable<T>(callable, UserContextHolder.getContext()));
-		return super.wrapCallable(new DelegatingUserContextCallable<T>(callable, UserContextHolder.getContext()));
+			return existingConcurrencyStrategy.wrapCallable(new DelegatingUserContextCallable<>(callable, UserContextHolder.getContext()));
+		return super.wrapCallable(new DelegatingUserContextCallable<>(callable, UserContextHolder.getContext()));
 	}
 
 }
