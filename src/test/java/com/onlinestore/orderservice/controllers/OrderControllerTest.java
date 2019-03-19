@@ -22,7 +22,6 @@ public class OrderControllerTest {
 	private static final String ANY_CUSTOMER_ID = "26";
 	private static final String ANY_ORDER_ID = "3";
 	private static final String MAIN_URI ="/v1/customers/"+ANY_CUSTOMER_ID+"/orders/";
-	private static final String CLIENT_TYPE = "Discovery";
 
 	@MockBean
 	private OrderService orderService;
@@ -41,8 +40,8 @@ public class OrderControllerTest {
 
 	@Test
 	public void shouldGetOrder() throws Exception {
-		mockMvc.perform(get(MAIN_URI+ ANY_ORDER_ID +"/"+CLIENT_TYPE)).andExpect(status().isOk());
-		verify(orderService).getOrder(ANY_CUSTOMER_ID, ANY_ORDER_ID, CLIENT_TYPE);
+		mockMvc.perform(get(MAIN_URI+ ANY_ORDER_ID)).andExpect(status().isOk());
+		verify(orderService).getOrder(ANY_CUSTOMER_ID, ANY_ORDER_ID);
 	}
 
 	@Test
