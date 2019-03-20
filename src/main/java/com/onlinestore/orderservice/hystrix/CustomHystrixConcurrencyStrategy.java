@@ -12,9 +12,23 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Custom concurrency strategy that wraps Hystrix calls and allows to inject any additional parent thread context
+ * into the threads managed by the Hystrix command.
+ * <p>
+ * Methods use the existingConcurrencyStrategy method implementation or the base HystrixConcurrencyStrategy.
+ */
 public class CustomHystrixConcurrencyStrategy extends HystrixConcurrencyStrategy {
+	/**
+	 * Existing concurrency strategy defined by Spring Cloud.
+	 */
 	private HystrixConcurrencyStrategy existingConcurrencyStrategy;
 
+	/**
+	 * Constructs a new {@code CustomHystrixConcurrencyStrategy} instance.
+	 *
+	 * @param existingConcurrencyStrategy existing concurrency strategy already defined by Spring Cloud
+	 */
 	public CustomHystrixConcurrencyStrategy(HystrixConcurrencyStrategy existingConcurrencyStrategy) {
 		this.existingConcurrencyStrategy = existingConcurrencyStrategy;
 	}
