@@ -35,7 +35,7 @@ public final class DelegatingUserContextCallable<V> implements Callable<V> {
 	}
 
 	/**
-	 * Invoke the {@code call} method of the delegated Callable. This call invokes the method protected
+	 * Invokes the {@code call} method of the delegated Callable. This call invokes the method protected
 	 * by the @HystrixCommand annotation.
 	 *
 	 * @return result
