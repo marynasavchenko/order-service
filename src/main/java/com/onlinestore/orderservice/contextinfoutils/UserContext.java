@@ -2,6 +2,9 @@ package com.onlinestore.orderservice.contextinfoutils;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Contextual information scrapped from incoming HTTP request.
+ */
 @Component
 public class UserContext {
 
@@ -14,6 +17,9 @@ public class UserContext {
 	private String authToken = new String();
 	private String userId = new String();
 	private String customerId = new String();
+
+	public UserContext() {
+	}
 
 	public String getCorrelationId() {
 		return correlationId;
