@@ -2,13 +2,27 @@ package com.onlinestore.orderservice.domain;
 
 import java.util.Objects;
 
+/**
+ * Customer class for retrieving and storing customer information from customer service.
+ */
 public class Customer {
 	private String customerId;
 	private String customerName;
 	private String customerAddress;
 
+	/**
+	 * Constructs a new empty {@code Customer} instance.
+	 */
 	public Customer() {
 	}
+
+	/**
+	 * Constructs a new {@code Customer} instance.
+	 *
+	 * @param customerId      the unique id of the customer
+	 * @param customerName    name of the customer
+	 * @param customerAddress customer address
+	 */
 
 	public Customer(String customerId, String customerName, String customerAddress) {
 		this.customerId = customerId;
