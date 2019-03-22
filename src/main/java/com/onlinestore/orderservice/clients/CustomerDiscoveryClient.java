@@ -11,19 +11,40 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+/**
+ * Implementation of {@link Client} interface using {@code DiscoveryClient}.
+ * <p>
+ * Uses the discovery client and a standard Spring RestTemplate class to invoke the customer service.
+ */
 @Component
 public class CustomerDiscoveryClient implements Client {
-
+	/**
+	 * DiscoveryClient used to interact with Ribbon.
+	 */
 	private DiscoveryClient discoveryClient;
-
+	/**
+	 * Spring RestTemplate.
+	 */
 	private RestTemplate restTemplate;
 
+	/**
+	 * Constructs a new {@code CustomerDiscoveryClient} instance.
+	 *
+	 * @param discoveryClient DiscoveryClient
+	 * @param restTemplate    Spring RestTemplate
+	 */
 	@Autowired
 	public CustomerDiscoveryClient(DiscoveryClient discoveryClient, RestTemplate restTemplate) {
 		this.discoveryClient = discoveryClient;
 		this.restTemplate = restTemplate;
 	}
 
+	/**
+	 * Calls the customer service via the Spring DiscoveryClient.
+	 *
+	 * @param customerId the unique id of the customer
+	 * @return customer specified by Id
+	 */
 	@Override
 	public Customer getCustomer(String customerId) {
 		List<ServiceInstance> serviceInstances = discoveryClient.getInstances("customerservice");
