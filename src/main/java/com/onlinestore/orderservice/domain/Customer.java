@@ -6,8 +6,17 @@ import java.util.Objects;
  * Customer class for retrieving and storing customer information from customer service.
  */
 public class Customer {
+	/**
+	 * The unique id of the customer.
+	 */
 	private String customerId;
+	/**
+	 * Name of the customer.
+	 */
 	private String customerName;
+	/**
+	 * Address of the customer.
+	 */
 	private String customerAddress;
 
 	/**
@@ -21,7 +30,7 @@ public class Customer {
 	 *
 	 * @param customerId      the unique id of the customer
 	 * @param customerName    name of the customer
-	 * @param customerAddress customer address
+	 * @param customerAddress address of the customer
 	 */
 
 	public Customer(String customerId, String customerName, String customerAddress) {
