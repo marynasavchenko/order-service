@@ -6,16 +6,29 @@ import javax.persistence.Embeddable;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * ShoppingPositions class. Part of the {@link Order} class.
+ */
 @Embeddable
 public class ShoppingPositions {
-
+	/**
+	 * List of {@code ShoppingPosition}.
+	 */
 	@ElementCollection
 	@CollectionTable(name = "shopping_items")
 	private List<ShoppingPosition> shoppingPositions;
 
+	/**
+	 * Constructs a new empty {@code ShoppingPositions} instance.
+	 */
 	public ShoppingPositions() {
 	}
 
+	/**
+	 * Constructs a new {@code ShoppingPositions} instance.
+	 *
+	 * @param shoppingPositions list of {@code ShoppingPosition}
+	 */
 	public ShoppingPositions(List<ShoppingPosition> shoppingPositions) {
 		this.shoppingPositions = shoppingPositions;
 	}
