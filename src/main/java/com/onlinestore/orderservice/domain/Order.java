@@ -5,33 +5,58 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * An order entity class.
+ */
 @Entity
 @Table(name = "orders")
 public class Order {
+	/**
+	 * The unique id of the order.
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String orderId;
-
+	/**
+	 * The unique id of the customer.
+	 */
 	private String customerId;
-
+	/**
+	 * Name of the customer.
+	 */
 	@Transient
 	private String customerName;
-
+	/**
+	 * Address of the customer.
+	 */
 	@Transient
 	private String customerAddress;
-
+	/**
+	 * Date of the order placement.
+	 */
 	private Date orderDate;
-
+	/**
+	 * Status of the order. Used for additional information about the order.
+	 */
 	private String orderStatus;
-
+	/**
+	 * Total sum of the order.
+	 */
 	private BigDecimal orderTotal;
-
+	/**
+	 * {@link OrderState}
+	 */
 	@Enumerated(EnumType.STRING)
 	private OrderState orderState;
-
+	/**
+	 * Object that includes list of shopping positions.
+	 */
 	@Embedded
 	private ShoppingPositions shoppingPositions;
 
+	/**
+	 * Constructs new empty {@code Order}.
+	 */
 	public Order() {
 	}
 
@@ -118,16 +143,17 @@ public class Order {
 	}
 
 	public Order withCustomerName(String customerName) {
-		this.customerName=customerName;
+		this.customerName = customerName;
 		return this;
 	}
 
 	public Order withCustomerAddress(String customerAddress) {
-		this.customerAddress=customerAddress;
+		this.customerAddress = customerAddress;
 		return this;
 	}
+
 	public Order withOrderStatus(String orderStatus) {
-		this.orderStatus=orderStatus;
+		this.orderStatus = orderStatus;
 		return this;
 	}
 
