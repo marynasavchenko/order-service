@@ -3,14 +3,32 @@ package com.onlinestore.orderservice.domain;
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
+/**
+ * Item class. Specific item for sale. Part of {@link ShoppingPosition} class.
+ */
 @Embeddable
 public class Item {
+	/**
+	 * Unique Id of the item.
+	 */
 	private String itemId;
+	/**
+	 * Name of the item.
+	 */
 	private String itemName;
 
+	/**
+	 * Constructs a new empty {@code Item} instance.
+	 */
 	public Item() {
 	}
 
+	/**
+	 * Constructs a new {@code Item} instance.
+	 *
+	 * @param itemId   unique Id of the item
+	 * @param itemName name of the item
+	 */
 	public Item(String itemId, String itemName) {
 		this.itemId = itemId;
 		this.itemName = itemName;
