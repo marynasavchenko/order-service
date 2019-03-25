@@ -17,13 +17,13 @@ import java.util.List;
  */
 @Service
 public class OrderServiceImpl implements OrderService {
+	/**
+	 * Client used to query for all the customer services
+	 */
+	private Client customerClient;
 
 	/**
 	 * Spring Data repository for orders
-	 */
-	private Client customerClient;
-	/**
-	 * Client used to query for all the customer services
 	 */
 	private OrderRepository orderRepository;
 

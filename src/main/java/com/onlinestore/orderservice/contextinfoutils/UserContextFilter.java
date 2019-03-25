@@ -16,6 +16,15 @@ public class UserContextFilter implements Filter {
 
 	}
 
+	/**
+	 * Retrieves values from HTTP request header into {@codeUserContext}.
+	 *
+	 * @param request
+	 * @param response
+	 * @param filterChain
+	 * @throws IOException
+	 * @throws ServletException
+	 */
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
