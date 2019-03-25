@@ -12,11 +12,20 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Class that bootstraps this service.
+ */
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableCircuitBreaker
 public class OrderApplication {
 
+	/**
+	 * Creates {@code RestTemplate} and adds {@code UserContextInterceptor} to it.
+	 * This {@code RestTemplate} is going to use Ribbon.
+	 *
+	 * @return {@code RestTemplate}
+	 */
 	@LoadBalanced
 	@Bean
 	public RestTemplate getRestTemplate() {
@@ -31,6 +40,11 @@ public class OrderApplication {
 		return restTemplate;
 	}
 
+	/**
+	 * Main method, used to run this application.
+	 *
+	 * @param args the string array, that contains command line arguments.
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(OrderApplication.class, args);
 	}
