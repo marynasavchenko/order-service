@@ -110,16 +110,6 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	/**
-	 * Modifies specific order in database.
-	 *
-	 * @param order an order to be modified
-	 */
-	@Override
-	public void updateOrder(Order order) {
-		orderRepository.save(order);
-	}
-
-	/**
 	 * Saves order to database.
 	 *
 	 * @param order an order to be saved

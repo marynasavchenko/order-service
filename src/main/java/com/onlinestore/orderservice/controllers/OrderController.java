@@ -62,7 +62,7 @@ public class OrderController {
 	@PutMapping(value = "/{orderId}")
 	public void updateOrder(@PathVariable("orderId") String orderId,
 	                        Order order) {
-		orderService.updateOrder(order);
+		orderService.saveOrder(order);
 	}
 
 	/**

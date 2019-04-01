@@ -33,13 +33,6 @@ public interface OrderService {
 	Order getOrder(String customerId, String orderId);
 
 	/**
-	 * Modifies an existing order.
-	 *
-	 * @param order an order to be modified
-	 */
-	void updateOrder(Order order);
-
-	/**
 	 * Saves new order.
 	 *
 	 * @param order an order to be saved
