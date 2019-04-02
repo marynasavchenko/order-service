@@ -41,16 +41,6 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	/**
-	 * Helper method that retrieves customer from one of the customerservice instances.
-	 *
-	 * @param customerId the unique id of the customer
-	 * @return the customer
-	 */
-	private Customer getCustomerInfo(String customerId) {
-		return customerClient.getCustomer(customerId);
-	}
-
-	/**
 	 * Gets all orders from database.
 	 *
 	 * @return list of orders
@@ -107,7 +97,7 @@ public class OrderServiceImpl implements OrderService {
 	public Order getOrder(String customerId, String orderId) {
 		Order order = orderRepository.findByCustomerIdAndOrderId(customerId, orderId)
 				.orElseThrow(() -> new OrderNotFoundException(customerId, orderId));
-		Customer customer = getCustomerInfo(customerId);
+		Customer customer = customerClient.getCustomer(customerId);
 		order.withCustomerName(customer.getCustomerName()).withCustomerAddress(customer.getCustomerAddress());
 		return order;
 	}
