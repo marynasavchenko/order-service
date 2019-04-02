@@ -15,6 +15,7 @@ import static org.mockito.Mockito.verify;
 public class OrderServiceImplTest {
 
 	private static final String ANY_ORDER_ID = "741";
+	private static final String ANY_CUSTOMER_ID = "1234";
 
 	@Mock
 	private OrderRepository orderRepository;
@@ -36,6 +37,12 @@ public class OrderServiceImplTest {
 	public void shouldGetAllOrders() throws Exception {
 		orderService.getAllOrders();
 		verify(orderRepository).findAll();
+	}
+
+	@Test
+	public void shouldGetOrdersByCustomerId() throws Exception {
+		orderService.getOrdersByCustomerId(ANY_CUSTOMER_ID);
+		verify(orderRepository).findByCustomerId(ANY_CUSTOMER_ID);
 	}
 
 	@Test
