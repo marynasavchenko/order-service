@@ -47,7 +47,7 @@ public class OrderControllerTest {
 	@Test
 	public void shouldUpdateOrder() throws Exception {
 		mockMvc.perform(put(MAIN_URI+ ANY_ORDER_ID)).andExpect(status().isOk());
-		verify(orderService).updateOrder(any(Order.class));
+		verify(orderService).saveOrder(any(Order.class));
 	}
 
 	@Test
