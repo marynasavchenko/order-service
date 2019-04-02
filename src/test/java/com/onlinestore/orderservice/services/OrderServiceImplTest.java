@@ -33,6 +33,12 @@ public class OrderServiceImplTest {
 	}
 
 	@Test
+	public void shouldGetAllOrders() throws Exception {
+		orderService.getAllOrders();
+		verify(orderRepository).findAll();
+	}
+
+	@Test
 	public void shouldSaveOrder() throws Exception {
 		orderService.saveOrder(order);
 		verify(orderRepository).save(order);
@@ -43,4 +49,5 @@ public class OrderServiceImplTest {
 		orderService.deleteOrder(ANY_ORDER_ID);
 		verify(orderRepository).deleteById(ANY_ORDER_ID);
 	}
+
 }
