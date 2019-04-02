@@ -1,15 +1,20 @@
 package com.onlinestore.orderservice.services;
 
 import com.onlinestore.orderservice.clients.Client;
+import com.onlinestore.orderservice.domain.Customer;
 import com.onlinestore.orderservice.domain.Order;
 import com.onlinestore.orderservice.repositories.OrderRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.Optional;
+
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OrderServiceImplTest {
@@ -23,8 +28,11 @@ public class OrderServiceImplTest {
 	@Mock
 	private Client customerClient;
 
-	@Mock
+	@Spy
 	private Order order;
+
+	@Spy
+	private Customer customer;
 
 	private OrderService orderService;
 
@@ -43,6 +51,16 @@ public class OrderServiceImplTest {
 	public void shouldGetOrdersByCustomerId() throws Exception {
 		orderService.getOrdersByCustomerId(ANY_CUSTOMER_ID);
 		verify(orderRepository).findByCustomerId(ANY_CUSTOMER_ID);
+	}
+
+	@Test
+	public void shouldGetSpecifiedOrder() throws Exception {
+		when(orderRepository.findByCustomerIdAndOrderId(ANY_CUSTOMER_ID, ANY_CUSTOMER_ID)).thenReturn(Optional.of(order));
+		when(customerClient.getCustomer(ANY_CUSTOMER_ID)).thenReturn(customer);
+
+		orderService.getOrder(ANY_CUSTOMER_ID, ANY_CUSTOMER_ID);
+
+		verify(orderRepository).findByCustomerIdAndOrderId(ANY_CUSTOMER_ID, ANY_CUSTOMER_ID);
 	}
 
 	@Test
