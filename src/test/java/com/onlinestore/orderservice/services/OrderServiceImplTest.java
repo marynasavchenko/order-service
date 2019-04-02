@@ -3,6 +3,7 @@ package com.onlinestore.orderservice.services;
 import com.onlinestore.orderservice.clients.Client;
 import com.onlinestore.orderservice.domain.Customer;
 import com.onlinestore.orderservice.domain.Order;
+import com.onlinestore.orderservice.exceptions.OrderNotFoundException;
 import com.onlinestore.orderservice.repositories.OrderRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -61,6 +62,12 @@ public class OrderServiceImplTest {
 		orderService.getOrder(ANY_CUSTOMER_ID, ANY_CUSTOMER_ID);
 
 		verify(orderRepository).findByCustomerIdAndOrderId(ANY_CUSTOMER_ID, ANY_CUSTOMER_ID);
+	}
+
+	@Test(expected = OrderNotFoundException.class)
+	public void shouldThrowExceptionWhenEmptyOptional() throws Exception {
+		when(orderRepository.findByCustomerIdAndOrderId(ANY_CUSTOMER_ID, ANY_CUSTOMER_ID)).thenReturn(Optional.empty());
+		orderService.getOrder(ANY_CUSTOMER_ID, ANY_CUSTOMER_ID);
 	}
 
 	@Test
