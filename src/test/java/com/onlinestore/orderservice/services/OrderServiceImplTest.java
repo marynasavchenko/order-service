@@ -13,6 +13,9 @@ import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OrderServiceImplTest {
+
+	private static final String ANY_ORDER_ID = "741";
+
 	@Mock
 	private OrderRepository orderRepository;
 
@@ -33,5 +36,11 @@ public class OrderServiceImplTest {
 	public void shouldSaveOrder() throws Exception {
 		orderService.saveOrder(order);
 		verify(orderRepository).save(order);
+	}
+
+	@Test
+	public void shouldDeleteOrder() throws Exception {
+		orderService.deleteOrder(ANY_ORDER_ID);
+		verify(orderRepository).deleteById(ANY_ORDER_ID);
 	}
 }
