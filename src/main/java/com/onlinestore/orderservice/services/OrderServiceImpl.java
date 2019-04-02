@@ -5,6 +5,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.onlinestore.orderservice.clients.Client;
 import com.onlinestore.orderservice.domain.Customer;
 import com.onlinestore.orderservice.domain.Order;
+import com.onlinestore.orderservice.exceptions.OrderNotFoundException;
 import com.onlinestore.orderservice.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -99,11 +100,13 @@ public class OrderServiceImpl implements OrderService {
 	 *
 	 * @param customerId the unique id of the customer
 	 * @param orderId    the unique id of the order
-	 * @return
+	 * @return an order
+	 * @throws OrderNotFoundException if {@code orderRepository} returns empty Optional
 	 */
 	@Override
 	public Order getOrder(String customerId, String orderId) {
-		Order order = orderRepository.findByCustomerIdAndOrderId(customerId, orderId);
+		Order order = orderRepository.findByCustomerIdAndOrderId(customerId, orderId)
+				.orElseThrow(() -> new OrderNotFoundException(customerId, orderId));
 		Customer customer = getCustomerInfo(customerId);
 		order.withCustomerName(customer.getCustomerName()).withCustomerAddress(customer.getCustomerAddress());
 		return order;
