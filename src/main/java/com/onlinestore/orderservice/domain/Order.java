@@ -2,7 +2,7 @@ package com.onlinestore.orderservice.domain;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -34,7 +34,7 @@ public class Order {
 	/**
 	 * Date of the order placement.
 	 */
-	private Date orderDate;
+	private LocalDate orderDate;
 	/**
 	 * Status of the order. Used for additional information about the order.
 	 */
@@ -60,7 +60,7 @@ public class Order {
 	public Order() {
 	}
 
-	public Order(String orderId, String customerId, Date orderDate, String orderStatus, BigDecimal orderTotal, OrderState orderState, ShoppingPositions shoppingPositions) {
+	public Order(String orderId, String customerId, LocalDate orderDate, String orderStatus, BigDecimal orderTotal, OrderState orderState, ShoppingPositions shoppingPositions) {
 		this.orderId = orderId;
 		this.customerId = customerId;
 		this.orderDate = orderDate;
@@ -86,11 +86,11 @@ public class Order {
 		this.customerId = customerId;
 	}
 
-	public Date getOrderDate() {
+	public LocalDate getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(Date orderDate) {
+	public void setOrderDate(LocalDate orderDate) {
 		this.orderDate = orderDate;
 	}
 
