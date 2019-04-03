@@ -14,6 +14,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Optional;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -68,6 +69,18 @@ public class OrderServiceImplTest {
 	public void shouldThrowExceptionWhenEmptyOptional() throws Exception {
 		when(orderRepository.findByCustomerIdAndOrderId(ANY_CUSTOMER_ID, ANY_CUSTOMER_ID)).thenReturn(Optional.empty());
 		orderService.getOrder(ANY_CUSTOMER_ID, ANY_CUSTOMER_ID);
+	}
+
+	@Test
+	public void shouldAddCustomerInfoToOrder() throws Exception {
+		when(orderRepository.findByCustomerIdAndOrderId(ANY_CUSTOMER_ID, ANY_CUSTOMER_ID)).thenReturn(Optional.of(order));
+		when(customerClient.getCustomer(ANY_CUSTOMER_ID)).thenReturn(customer);
+
+		orderService.getOrder(ANY_CUSTOMER_ID, ANY_CUSTOMER_ID);
+
+		verify(customerClient).getCustomer(ANY_CUSTOMER_ID);
+		verify(order).withCustomerAddress(any());
+		verify(order).withCustomerName(any());
 	}
 
 	@Test
