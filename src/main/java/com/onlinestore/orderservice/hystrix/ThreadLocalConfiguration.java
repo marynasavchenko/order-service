@@ -20,17 +20,8 @@ public class ThreadLocalConfiguration {
 	/**
 	 * Existing concurrency strategy defined by Spring Cloud
 	 */
-	private HystrixConcurrencyStrategy existingConcurrencyStrategy;
-
-	/**
-	 * Constructs a new {@code ThreadLocalConfiguration} instance.
-	 *
-	 * @param existingConcurrencyStrategy existing concurrency strategy defined by Spring Cloud
-	 */
 	@Autowired(required = false)
-	public ThreadLocalConfiguration(HystrixConcurrencyStrategy existingConcurrencyStrategy) {
-		this.existingConcurrencyStrategy = existingConcurrencyStrategy;
-	}
+	private HystrixConcurrencyStrategy existingConcurrencyStrategy;
 
 	/**
 	 * Registers custom HystrixConcurrencyStrategy and re-registers the original Hystrix components
