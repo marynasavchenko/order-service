@@ -1,5 +1,7 @@
 package com.onlinestore.orderservice.domain;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -15,7 +17,8 @@ public class Order {
 	 * The unique id of the order.
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	private String orderId;
 	/**
 	 * The unique id of the customer.
@@ -60,8 +63,7 @@ public class Order {
 	public Order() {
 	}
 
-	public Order(String orderId, String customerId, LocalDate orderDate, String orderStatus, BigDecimal orderTotal, OrderState orderState, ShoppingPositions shoppingPositions) {
-		this.orderId = orderId;
+	public Order(String customerId, LocalDate orderDate, String orderStatus, BigDecimal orderTotal, OrderState orderState, ShoppingPositions shoppingPositions) {
 		this.customerId = customerId;
 		this.orderDate = orderDate;
 		this.orderStatus = orderStatus;
