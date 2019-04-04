@@ -78,4 +78,12 @@ public class OrderRepositoryTest {
 		Optional<Order> optionalOrder = orderRepository.findByCustomerIdAndOrderId(CUSTOMER_ID_1, order2.getOrderId());
 		assertEquals(order2, optionalOrder.get());
 	}
+
+	@Test
+	public void shouldDeleteOrderById() throws Exception {
+		orderRepository.save(order1);
+		orderRepository.deleteById(order1.getOrderId());
+		Optional<Order> optionalOrder = orderRepository.findByCustomerIdAndOrderId(CUSTOMER_ID_1, order1.getOrderId());
+		assertEquals(Optional.empty(), optionalOrder);
+	}
 }
