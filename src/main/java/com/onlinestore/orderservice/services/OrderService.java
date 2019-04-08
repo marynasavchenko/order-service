@@ -11,24 +11,24 @@ public interface OrderService {
 	/**
 	 * Returns all orders of all customers.
 	 *
-	 * @return the list of orders of all customers
+	 * @return list of orders of all customers
 	 */
 	List<Order> getAllOrders();
 
 	/**
-	 * Returns all orders of a customer, specified by customerId.
+	 * Returns all orders of the customer, specified by customerId.
 	 *
-	 * @param customerId the unique id of the customer
-	 * @return the list of orders of one customer
+	 * @param customerId unique id of the customer
+	 * @return list of orders of one customer
 	 */
 	List<Order> getOrdersByCustomerId(String customerId);
 
 	/**
-	 * Gets specific order of specific customer.
+	 * Returns specific order of the specific customer.
 	 *
-	 * @param customerId the unique id of the customer
-	 * @param orderId    the unique id of the order
-	 * @return specific customers order
+	 * @param customerId unique id of the customer
+	 * @param orderId    unique id of the order
+	 * @return specific order
 	 */
 	Order getOrder(String customerId, String orderId);
 

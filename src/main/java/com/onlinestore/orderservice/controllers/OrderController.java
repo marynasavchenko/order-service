@@ -30,10 +30,10 @@ public class OrderController {
 	}
 
 	/**
-	 * GET  / : get the list of orders of specified customer.
+	 * GET  / : gets list of orders of the specified customer.
 	 *
-	 * @param customerId the unique id of the customer
-	 * @return list of orders of specified customer
+	 * @param customerId unique id of the customer
+	 * @return list of orders of the specified customer
 	 */
 	@GetMapping(value = "/")
 	public List<Order> getOrdersWithCustomer(@PathVariable("customerId") String customerId) {
@@ -41,11 +41,11 @@ public class OrderController {
 	}
 
 	/**
-	 * GET  /{orderId} : get the list of orders of specified order.
+	 * GET  /{orderId} : gets specified order.
 	 *
-	 * @param customerId the unique id of the customer
-	 * @param orderId    the unique id of the order
-	 * @return an order
+	 * @param customerId unique id of the customer
+	 * @param orderId    unique id of the order
+	 * @return order
 	 */
 	@GetMapping(value = "/{orderId}")
 	public Order getOrder(@PathVariable("customerId") String customerId,
@@ -56,8 +56,8 @@ public class OrderController {
 	/**
 	 * PUT /{orderId} : updates an existing order.
 	 *
-	 * @param orderId the unique id of the customer
-	 * @param order   the unique id of the order
+	 * @param orderId unique id of the order
+	 * @param order
 	 */
 	@PutMapping(value = "/{orderId}")
 	public void updateOrder(@PathVariable("orderId") String orderId,
@@ -68,7 +68,7 @@ public class OrderController {
 	/**
 	 * POST / : saves new order.
 	 *
-	 * @param order an order to be saved
+	 * @param order order to be saved
 	 */
 	@PostMapping(value = "/")
 	public void saveOrder(Order order) {
@@ -76,9 +76,9 @@ public class OrderController {
 	}
 
 	/**
-	 * DELETE /{orderId} : deletes an existing order.
+	 * DELETE /{orderId} : deletes existing order.
 	 *
-	 * @param orderId the unique id of the order
+	 * @param orderId unique id of the order
 	 */
 	@DeleteMapping(value = "/{orderId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)

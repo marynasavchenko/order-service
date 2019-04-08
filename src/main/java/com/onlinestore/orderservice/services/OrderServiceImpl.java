@@ -19,12 +19,12 @@ import java.util.List;
 @Service
 public class OrderServiceImpl implements OrderService {
 	/**
-	 * Client used to query for all the customer services
+	 * Client used to query for all customer services.
 	 */
 	private Client customerClient;
 
 	/**
-	 * Spring Data repository for orders
+	 * Spring Data repository for orders.
 	 */
 	private OrderRepository orderRepository;
 
@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	/**
-	 * Gets all orders from database.
+	 * Returns all orders from database.
 	 *
 	 * @return list of orders
 	 */
@@ -51,14 +51,14 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	/**
-	 * Gets all orders of the specific customer from database.
+	 * Returns all orders of the specific customer from database.
 	 * <p>
 	 * Implements simple fallback strategy. Fallback method is called if call from Hystrix fail.
 	 * <p>
 	 * Implements bulkhead strategy. Defines segregated thread pool with number of threads and queue size
 	 * for the number of requests that can queue if the individual threads are busy.
 	 *
-	 * @param customerId the unique id of the customer
+	 * @param customerId unique id of the customer
 	 * @return list of orders of the specific customer
 	 */
 	@Override
@@ -73,10 +73,10 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	/**
-	 * Helper method that builds order list for fallback strategy.
+	 * Builds order list for fallback strategy.
 	 *
-	 * @param customerId the unique id of the customer
-	 * @return fallback list of orders.
+	 * @param customerId unique id of the customer
+	 * @return fallback list of orders
 	 */
 	private List<Order> buildFallbackOrderList(String customerId) {
 		List<Order> fallbackList = new ArrayList<>();
@@ -86,11 +86,11 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	/**
-	 * Gets specific order from database. Additional customer information added from customer service.
+	 * Returns specific order from database. Additional customer information added from customer service.
 	 *
-	 * @param customerId the unique id of the customer
-	 * @param orderId    the unique id of the order
-	 * @return an order
+	 * @param customerId unique id of the customer
+	 * @param orderId    unique id of the order
+	 * @return order
 	 * @throws OrderNotFoundException if {@code orderRepository} returns empty Optional
 	 */
 	@Override
@@ -105,7 +105,7 @@ public class OrderServiceImpl implements OrderService {
 	/**
 	 * Saves order to database.
 	 *
-	 * @param order an order to be saved
+	 * @param order order to be saved
 	 */
 	@Override
 	public void saveOrder(Order order) {
@@ -115,7 +115,7 @@ public class OrderServiceImpl implements OrderService {
 	/**
 	 * Delete order from database.
 	 *
-	 * @param orderId the unique id of the order
+	 * @param orderId unique id of the order
 	 */
 	@Override
 	public void deleteOrder(String orderId) {

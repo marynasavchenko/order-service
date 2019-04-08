@@ -10,11 +10,11 @@ import java.util.concurrent.Callable;
  * <p>
  * Propagate thread context of the parent thread to Hystrix command.
  *
- * @param <V> the result type of method call
+ * @param <V>  result type of the method call
  */
 public final class DelegatingUserContextCallable<V> implements Callable<V> {
 	/**
-	 * Callable that would be invoked by a thread managed by a Hystrix command pool.
+	 * Callable that would be invoked by a thread managed by Hystrix command pool.
 	 */
 	private final Callable<V> delegatedCallable;
 
@@ -35,8 +35,8 @@ public final class DelegatingUserContextCallable<V> implements Callable<V> {
 	}
 
 	/**
-	 * Invokes the {@code call} method of the delegated Callable. This call invokes the method protected
-	 * by the @HystrixCommand annotation.
+	 * Invokes {@code call} method of the delegated Callable. This call invokes method protected
+	 * by @HystrixCommand annotation.
 	 *
 	 * @return result
 	 * @throws Exception

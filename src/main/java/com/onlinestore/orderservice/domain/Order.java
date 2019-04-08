@@ -8,20 +8,20 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * An order entity class.
+ * Order entity class.
  */
 @Entity
 @Table(name = "orders")
 public class Order {
 	/**
-	 * The unique id of the order.
+	 * Unique id of the order.
 	 */
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	private String orderId;
 	/**
-	 * The unique id of the customer.
+	 * Unique id of the customer.
 	 */
 	private String customerId;
 	/**
@@ -58,7 +58,7 @@ public class Order {
 	private ShoppingPositions shoppingPositions;
 
 	/**
-	 * Constructs new empty {@code Order} instance.
+	 * Constructs a new empty {@code Order} instance.
 	 */
 	public Order() {
 	}

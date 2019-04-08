@@ -27,7 +27,7 @@ public class UserContextHolder {
 	}
 
 	/**
-	 * Stores a UserContext object in a ThreadLocal variable specific to the thread being run.
+	 * Stores UserContext object in a ThreadLocal variable specific to the thread being run.
 	 *
 	 * @param userContext contextual information
 	 */

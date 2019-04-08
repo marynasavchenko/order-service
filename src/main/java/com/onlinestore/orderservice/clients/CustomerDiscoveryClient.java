@@ -12,9 +12,9 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 /**
- * Implementation of {@link Client} interface using {@code DiscoveryClient}.
+ * Implementation of the {@link Client} interface using {@code DiscoveryClient}.
  * <p>
- * Uses the discovery client and a standard Spring RestTemplate class to invoke the customer service.
+ * Uses discovery client and standard Spring RestTemplate class to invoke customer service.
  */
 @Component
 public class CustomerDiscoveryClient implements Client {
@@ -42,7 +42,7 @@ public class CustomerDiscoveryClient implements Client {
 	/**
 	 * Calls the customer service via the Spring DiscoveryClient.
 	 *
-	 * @param customerId the unique id of the customer
+	 * @param customerId unique id of the customer
 	 * @return customer specified by Id
 	 */
 	@Override

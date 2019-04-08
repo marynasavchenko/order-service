@@ -4,7 +4,7 @@ import javax.persistence.Embeddable;
 import java.util.Objects;
 
 /**
- * An Item class. Specific item for sale. Part of {@link ShoppingPosition} class.
+ * Item class. Specific item for sale. Part of {@link ShoppingPosition} class.
  */
 @Embeddable
 public class Item {

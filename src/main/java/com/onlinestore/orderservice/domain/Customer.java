@@ -28,7 +28,7 @@ public class Customer {
 	/**
 	 * Constructs a new {@code Customer} instance.
 	 *
-	 * @param customerId      the unique id of the customer
+	 * @param customerId      unique id of the customer
 	 * @param customerName    name of the customer
 	 * @param customerAddress address of the customer
 	 */

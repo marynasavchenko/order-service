@@ -8,24 +8,24 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Spring Data JPA repository for Order entity that supports CRUD operations.
+ * Spring Data JPA repository for {@link Order} entity that supports CRUD operations.
  */
 @Repository
 public interface OrderRepository extends JpaRepository<Order, String> {
 	/**
-	 * Looks up order of specified customer in database.
+	 * Returns list of orders of the specified customer from database.
 	 *
-	 * @param customerId the unique id of the customer
+	 * @param customerId unique id of the customer
 	 * @return list of orders
 	 */
 	List<Order> findByCustomerId(String customerId);
 
 	/**
-	 * Looks up specific order in database.
+	 * Returns Optional of specific order from database. Returns empty optional when there is no order.
 	 *
-	 * @param customerId the unique id of the customer
-	 * @param orderId    the unique id of the order
-	 * @return an order
+	 * @param customerId unique id of the customer
+	 * @param orderId    unique id of the order
+	 * @return Optional of order
 	 */
 	Optional<Order> findByCustomerIdAndOrderId(String customerId, String orderId);
 

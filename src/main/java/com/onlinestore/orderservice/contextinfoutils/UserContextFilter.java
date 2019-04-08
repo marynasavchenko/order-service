@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
- * Custom HTTP ServletFilter. Maps the HTTP header values to the {@link UserContext} class.
+ * Custom HTTP ServletFilter. Maps HTTP header values to {@link UserContext} class.
  */
 @Component
 public class UserContextFilter implements Filter {

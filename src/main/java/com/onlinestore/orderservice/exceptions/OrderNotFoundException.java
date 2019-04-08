@@ -7,7 +7,7 @@ public class OrderNotFoundException extends RuntimeException {
 	/**
 	 * Constructs a new {@code OrderNotFoundException} instance.
 	 *
-	 * @param customerId the unique id of the customer
+	 * @param customerId unique id of the customer
 	 * @param orderId    unique id of the order
 	 */
 	public OrderNotFoundException(String customerId, String orderId) {

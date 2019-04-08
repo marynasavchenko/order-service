@@ -42,7 +42,7 @@ public class UserContext {
 	private String customerId = new String();
 
 	/**
-	 * Constructs new empty {@code UserContext} instance.
+	 * Constructs a new empty {@code UserContext} instance.
 	 */
 	public UserContext() {
 	}

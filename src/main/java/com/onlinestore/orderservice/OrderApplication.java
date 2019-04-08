@@ -43,7 +43,7 @@ public class OrderApplication {
 	/**
 	 * Main method, used to run this application.
 	 *
-	 * @param args the string array, that contains command line arguments.
+	 * @param args string array, that contains command line arguments
 	 */
 	public static void main(String[] args) {
 		SpringApplication.run(OrderApplication.class, args);
