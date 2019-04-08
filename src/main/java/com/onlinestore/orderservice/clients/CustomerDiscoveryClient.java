@@ -28,7 +28,7 @@ public class CustomerDiscoveryClient implements Client {
 	private RestTemplate restTemplate;
 
 	/**
-	 * Constructs a new {@code CustomerDiscoveryClient} instance.
+	 * Constructs new {@code CustomerDiscoveryClient} instance.
 	 *
 	 * @param discoveryClient DiscoveryClient
 	 * @param restTemplate    Spring RestTemplate
@@ -40,7 +40,7 @@ public class CustomerDiscoveryClient implements Client {
 	}
 
 	/**
-	 * Calls the customer service via the Spring DiscoveryClient.
+	 * Calls customer service via Spring DiscoveryClient.
 	 *
 	 * @param customerId unique id of the customer
 	 * @return customer specified by Id

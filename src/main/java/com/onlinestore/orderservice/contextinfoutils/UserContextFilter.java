@@ -17,7 +17,7 @@ public class UserContextFilter implements Filter {
 	}
 
 	/**
-	 * Retrieves values from HTTP request header into {@codeUserContext}.
+	 * Retrieves values from HTTP request header into {@code UserContext}.
 	 *
 	 * @param request
 	 * @param response

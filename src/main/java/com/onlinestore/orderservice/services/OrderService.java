@@ -42,7 +42,7 @@ public interface OrderService {
 	/**
 	 * Deletes an order.
 	 *
-	 * @param orderId the unique id of the order
+	 * @param orderId unique id of the order
 	 */
 	void deleteOrder(String orderId);
 }

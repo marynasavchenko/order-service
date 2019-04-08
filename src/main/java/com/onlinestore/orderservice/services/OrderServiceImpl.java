@@ -19,7 +19,7 @@ import java.util.List;
 @Service
 public class OrderServiceImpl implements OrderService {
 	/**
-	 * Client used to query for all customer services.
+	 * Client used to invoke customer service.
 	 */
 	private Client customerClient;
 
@@ -29,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
 	private OrderRepository orderRepository;
 
 	/**
-	 * Constructs a new {@code OrderServiceImpl} instance.
+	 * Constructs new {@code OrderServiceImpl} instance.
 	 *
 	 * @param orderRepository Spring Data repository for orders
 	 * @param customerClient  client used to query for all the customer services

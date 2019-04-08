@@ -18,13 +18,13 @@ public class Item {
 	private String itemName;
 
 	/**
-	 * Constructs a new empty {@code Item} instance.
+	 * Constructs new empty {@code Item} instance.
 	 */
 	public Item() {
 	}
 
 	/**
-	 * Constructs a new {@code Item} instance.
+	 * Constructs new {@code Item} instance.
 	 *
 	 * @param itemId   unique Id of the item
 	 * @param itemName name of the item

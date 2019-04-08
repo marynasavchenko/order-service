@@ -58,7 +58,7 @@ public class Order {
 	private ShoppingPositions shoppingPositions;
 
 	/**
-	 * Constructs a new empty {@code Order} instance.
+	 * Constructs new empty {@code Order} instance.
 	 */
 	public Order() {
 	}

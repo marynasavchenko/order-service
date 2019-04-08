@@ -20,7 +20,7 @@ public class OrderController {
 	private OrderService orderService;
 
 	/**
-	 * Constructs a new {@code OrderController} instance.
+	 * Constructs new {@code OrderController} instance.
 	 *
 	 * @param orderService service that supports operations with orders
 	 */

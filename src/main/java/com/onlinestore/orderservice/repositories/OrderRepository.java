@@ -32,7 +32,7 @@ public interface OrderRepository extends JpaRepository<Order, String> {
 	/**
 	 * Deletes specific order in database.
 	 *
-	 * @param orderId the unique id of the order
+	 * @param orderId unique id of the order
 	 */
 	void deleteById(String orderId);
 }

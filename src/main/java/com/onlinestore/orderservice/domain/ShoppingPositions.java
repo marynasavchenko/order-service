@@ -19,13 +19,13 @@ public class ShoppingPositions {
 	private List<ShoppingPosition> shoppingPositions;
 
 	/**
-	 * Constructs a new empty {@code ShoppingPositions} instance.
+	 * Constructs new empty {@code ShoppingPositions} instance.
 	 */
 	public ShoppingPositions() {
 	}
 
 	/**
-	 * Constructs a new {@code ShoppingPositions} instance.
+	 * Constructs new {@code ShoppingPositions} instance.
 	 *
 	 * @param shoppingPositions list of {@code ShoppingPosition}
 	 */

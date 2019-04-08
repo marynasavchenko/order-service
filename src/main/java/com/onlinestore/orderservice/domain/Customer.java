@@ -20,13 +20,13 @@ public class Customer {
 	private String customerAddress;
 
 	/**
-	 * Constructs a new empty {@code Customer} instance.
+	 * Constructs new empty {@code Customer} instance.
 	 */
 	public Customer() {
 	}
 
 	/**
-	 * Constructs a new {@code Customer} instance.
+	 * Constructs new {@code Customer} instance.
 	 *
 	 * @param customerId      unique id of the customer
 	 * @param customerName    name of the customer

@@ -3,7 +3,7 @@ package com.onlinestore.orderservice.contextinfoutils;
 import org.springframework.util.Assert;
 
 /**
- * Class that used to store the UserContext in a ThreadLocal class.
+ * Class that used to store UserContext in ThreadLocal class.
  */
 public class UserContextHolder {
 	/**
@@ -27,7 +27,7 @@ public class UserContextHolder {
 	}
 
 	/**
-	 * Stores UserContext object in a ThreadLocal variable specific to the thread being run.
+	 * Stores UserContext object in ThreadLocal variable specific to the thread being run.
 	 *
 	 * @param userContext contextual information
 	 */

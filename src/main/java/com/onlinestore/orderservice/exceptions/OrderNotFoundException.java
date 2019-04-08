@@ -5,7 +5,7 @@ package com.onlinestore.orderservice.exceptions;
  */
 public class OrderNotFoundException extends RuntimeException {
 	/**
-	 * Constructs a new {@code OrderNotFoundException} instance.
+	 * Constructs new {@code OrderNotFoundException} instance.
 	 *
 	 * @param customerId unique id of the customer
 	 * @param orderId    unique id of the order

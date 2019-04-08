@@ -28,13 +28,13 @@ public class ShoppingPosition {
 	private BigDecimal price;
 
 	/**
-	 * Constructs a new empty {@code ShoppingPosition} instance.
+	 * Constructs new empty {@code ShoppingPosition} instance.
 	 */
 	public ShoppingPosition() {
 	}
 
 	/**
-	 * Constructs a new {@code ShoppingPosition} instance.
+	 * Constructs new {@code ShoppingPosition} instance.
 	 *
 	 * @param shoppingPositionId unique Id of the ShoppingPosition
 	 * @param item               specific {@code Item}
