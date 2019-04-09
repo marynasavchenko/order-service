@@ -26,7 +26,7 @@ mvn clean test
 
 ## **Technology stack**
 
-* Java 8
+* Java
 * Spring Boot
 * Spring Cloud
 * Spring Data
