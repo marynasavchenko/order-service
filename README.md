@@ -1,6 +1,6 @@
 ## **Order service**
 
-Order service is a part of microservices-baced application Online store. It manages orders.
+Order service is a part of microservices-based application Online store. It manages orders.
 Spring Controller (OrderController) class exposes the HTTP endpoints that can be invoked on the microservice.
 
 ## **Technology stack**
