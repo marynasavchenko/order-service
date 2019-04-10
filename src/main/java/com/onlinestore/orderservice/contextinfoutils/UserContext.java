@@ -27,19 +27,19 @@ public class UserContext {
 	/**
 	 * Correlation Id used to trace the chain of events.
 	 */
-	private String correlationId = new String();
+	private String correlationId = "";
 	/**
 	 * Auth token.
 	 */
-	private String authToken = new String();
+	private String authToken = "";
 	/**
 	 * User id.
 	 */
-	private String userId = new String();
+	private String userId = "";
 	/**
 	 * Unique id of the customer.
 	 */
-	private String customerId = new String();
+	private String customerId = "";
 
 	/**
 	 * Constructs new empty {@code UserContext} instance.
