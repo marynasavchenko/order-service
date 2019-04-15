@@ -1,16 +1,26 @@
 package com.onlinestore.orderservice.domain;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+@DataJpaTest
+@RunWith(SpringRunner.class)
+public class OrderJpaTest {
 
-public class OrderTest {
+	@Autowired
+	private TestEntityManager entityManager;
+
 	private static final String CUSTOMER_ID = "362";
 	private BigDecimal price;
 	private ShoppingPositions shoppingPositions;
@@ -29,8 +39,9 @@ public class OrderTest {
 	}
 
 	@Test
-	public void shouldCreateOrder() throws Exception {
-		Order order = new Order(CUSTOMER_ID, orderDate, "", price, OrderState.ACCEPTED, shoppingPositions);
-		assertEquals(CUSTOMER_ID, order.getCustomerId());
+	public void shouldMapOrderEntity() throws Exception {
+		Order order = this.entityManager.persistAndFlush(new Order (CUSTOMER_ID, orderDate, "", price, OrderState.ACCEPTED, shoppingPositions));
+		Assertions.assertThat(order.getOrderId()).isNotNull();
+		Assertions.assertThat(order.getOrderId()).inUnicode();
 	}
 }
