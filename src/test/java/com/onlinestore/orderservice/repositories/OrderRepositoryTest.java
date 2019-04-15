@@ -1,6 +1,7 @@
 package com.onlinestore.orderservice.repositories;
 
 import com.onlinestore.orderservice.domain.*;
+import org.assertj.core.api.Assertions;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,6 +64,8 @@ public class OrderRepositoryTest {
 	public void shouldFindOrdersByCustomerId() throws Exception {
 		orderRepository.save(order1);
 		List<Order> orders = orderRepository.findByCustomerId(CUSTOMER_ID_1);
+		Assertions.assertThat(orders.size()).isEqualTo(1);
+		Assertions.assertThat(orders.iterator().next().getCustomerId()).isEqualTo(CUSTOMER_ID_1);
 		assertEquals(orders.get(0), order1);
 	}
 
