@@ -76,16 +76,8 @@ public class Order {
 		return orderId;
 	}
 
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
-	}
-
 	public String getCustomerId() {
 		return customerId;
-	}
-
-	public void setCustomerId(String customerId) {
-		this.customerId = customerId;
 	}
 
 	public LocalDate getOrderDate() {
@@ -98,10 +90,6 @@ public class Order {
 
 	public String getOrderStatus() {
 		return orderStatus;
-	}
-
-	public void setOrderStatus(String orderStatus) {
-		this.orderStatus = orderStatus;
 	}
 
 	public BigDecimal getOrderTotal() {
@@ -126,14 +114,6 @@ public class Order {
 
 	public void setShoppingPositions(ShoppingPositions shoppingPositions) {
 		this.shoppingPositions = shoppingPositions;
-	}
-
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
-
-	public void setCustomerAddress(String customerAddress) {
-		this.customerAddress = customerAddress;
 	}
 
 	public String getCustomerName() {
