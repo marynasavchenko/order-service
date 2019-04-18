@@ -40,7 +40,7 @@ public class CustomerClient implements Client {
 	}
 
 	/**
-	 * Calls customer service via Spring DiscoveryClient.
+	 * Gets instances of service via Spring DiscoveryClient. Calls customer service using RestTemplate.
 	 *
 	 * @param customerId unique id of the customer
 	 * @return customer specified by Id
