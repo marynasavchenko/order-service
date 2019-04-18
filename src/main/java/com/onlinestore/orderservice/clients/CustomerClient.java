@@ -17,7 +17,7 @@ import java.util.List;
  * Uses discovery client and standard Spring RestTemplate class to invoke customer service.
  */
 @Component
-public class CustomerDiscoveryClient implements Client {
+public class CustomerClient implements Client {
 	/**
 	 * DiscoveryClient used to interact with Ribbon.
 	 */
@@ -28,13 +28,13 @@ public class CustomerDiscoveryClient implements Client {
 	private RestTemplate restTemplate;
 
 	/**
-	 * Constructs new {@code CustomerDiscoveryClient} instance.
+	 * Constructs new {@code CustomerClient} instance.
 	 *
 	 * @param discoveryClient DiscoveryClient
 	 * @param restTemplate    Spring RestTemplate
 	 */
 	@Autowired
-	public CustomerDiscoveryClient(DiscoveryClient discoveryClient, RestTemplate restTemplate) {
+	public CustomerClient(DiscoveryClient discoveryClient, RestTemplate restTemplate) {
 		this.discoveryClient = discoveryClient;
 		this.restTemplate = restTemplate;
 	}
