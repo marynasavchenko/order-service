@@ -18,6 +18,8 @@ import java.util.List;
  */
 @Component
 public class CustomerClient implements Client {
+
+	private static final String SERVICE_NAME = "customerservice";
 	/**
 	 * DiscoveryClient used to interact with Ribbon.
 	 */
@@ -47,7 +49,7 @@ public class CustomerClient implements Client {
 	 */
 	@Override
 	public Customer getCustomer(String customerId) {
-		List<ServiceInstance> serviceInstances = discoveryClient.getInstances("customerservice");
+		List<ServiceInstance> serviceInstances = discoveryClient.getInstances(SERVICE_NAME);
 
 		if (serviceInstances.size() == 0) return null;
 		String serviceUri = String.format("%s/v1/customers/%s", serviceInstances.get(0).getUri().toString(), customerId);
