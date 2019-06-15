@@ -11,24 +11,13 @@ import java.util.Objects;
  */
 @Embeddable
 public class ShoppingPositions {
-	/**
-	 * List of {@code ShoppingPosition}.
-	 */
 	@ElementCollection
 	@CollectionTable(name = "shopping_items")
 	private List<ShoppingPosition> shoppingPositions;
 
-	/**
-	 * Constructs new empty {@code ShoppingPositions} instance.
-	 */
 	public ShoppingPositions() {
 	}
 
-	/**
-	 * Constructs new {@code ShoppingPositions} instance.
-	 *
-	 * @param shoppingPositions list of {@code ShoppingPosition}
-	 */
 	public ShoppingPositions(List<ShoppingPosition> shoppingPositions) {
 		this.shoppingPositions = shoppingPositions;
 	}

@@ -8,27 +8,12 @@ import java.util.Objects;
  */
 @Embeddable
 public class Item {
-	/**
-	 * Unique Id of the item.
-	 */
 	private String itemId;
-	/**
-	 * Name of the item.
-	 */
 	private String itemName;
 
-	/**
-	 * Constructs new empty {@code Item} instance.
-	 */
 	public Item() {
 	}
 
-	/**
-	 * Constructs new {@code Item} instance.
-	 *
-	 * @param itemId   unique Id of the item
-	 * @param itemName name of the item
-	 */
 	public Item(String itemId, String itemName) {
 		this.itemId = itemId;
 		this.itemName = itemName;

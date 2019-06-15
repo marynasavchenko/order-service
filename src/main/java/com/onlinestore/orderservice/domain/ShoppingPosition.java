@@ -9,38 +9,19 @@ import java.math.BigDecimal;
  */
 @Embeddable
 public class ShoppingPosition {
-	/**
-	 * Unique Id of the ShoppingPosition.
-	 */
 	private String shoppingPositionId;
-	/**
-	 * Specific {@code Item}.
-	 */
+
 	@Embedded
 	private Item item;
-	/**
-	 * Quantity of the {@code Item}.
-	 */
+
 	private int quantity;
-	/**
-	 * Price of the {@code Item}.
-	 */
+
 	private BigDecimal price;
 
-	/**
-	 * Constructs new empty {@code ShoppingPosition} instance.
-	 */
+
 	public ShoppingPosition() {
 	}
 
-	/**
-	 * Constructs new {@code ShoppingPosition} instance.
-	 *
-	 * @param shoppingPositionId unique Id of the ShoppingPosition
-	 * @param item               specific {@code Item}
-	 * @param quantity           quantity of the {@code Item}
-	 * @param price              price of the {@code Item}
-	 */
 	public ShoppingPosition(String shoppingPositionId, Item item, int quantity, BigDecimal price) {
 		this.shoppingPositionId = shoppingPositionId;
 		this.item = item;

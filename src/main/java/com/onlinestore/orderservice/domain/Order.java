@@ -13,53 +13,33 @@ import java.util.Objects;
 @Entity
 @Table(name = "orders")
 public class Order {
-	/**
-	 * Unique id of the order.
-	 */
+
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	private String orderId;
-	/**
-	 * Unique id of the customer.
-	 */
 	private String customerId;
-	/**
-	 * Name of the customer.
-	 */
+
 	@Transient
 	private String customerName;
-	/**
-	 * Address of the customer.
-	 */
+
 	@Transient
 	private String customerAddress;
-	/**
-	 * Date of the order placement.
-	 */
+
 	private LocalDate orderDate;
 	/**
 	 * Status of the order. Used for additional information about the order.
 	 */
 	private String orderStatus;
-	/**
-	 * Total sum of the order.
-	 */
+
 	private BigDecimal orderTotal;
-	/**
-	 * {@link OrderState}
-	 */
+
 	@Enumerated(EnumType.STRING)
 	private OrderState orderState;
-	/**
-	 * Object that includes list of shopping positions.
-	 */
+
 	@Embedded
 	private ShoppingPositions shoppingPositions;
 
-	/**
-	 * Constructs new empty {@code Order} instance.
-	 */
 	public Order() {
 	}
 
