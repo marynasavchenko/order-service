@@ -20,21 +20,11 @@ import java.util.List;
 public class CustomerClient implements Client {
 
 	private static final String SERVICE_NAME = "customerservice";
-	/**
-	 * DiscoveryClient used to interact with Ribbon.
-	 */
+
 	private DiscoveryClient discoveryClient;
-	/**
-	 * Spring RestTemplate.
-	 */
+
 	private RestTemplate restTemplate;
 
-	/**
-	 * Constructs new {@code CustomerClient} instance.
-	 *
-	 * @param discoveryClient DiscoveryClient
-	 * @param restTemplate    Spring RestTemplate
-	 */
 	@Autowired
 	public CustomerClient(DiscoveryClient discoveryClient, RestTemplate restTemplate) {
 		this.discoveryClient = discoveryClient;

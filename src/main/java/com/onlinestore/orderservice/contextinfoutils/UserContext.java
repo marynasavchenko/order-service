@@ -24,26 +24,16 @@ public class UserContext {
 	 */
 	public static final String CUSTOMER_ID = "onlst-customer-id";
 
-	/**
-	 * Correlation Id used to trace the chain of events.
-	 */
+
 	private String correlationId = "";
-	/**
-	 * Auth token.
-	 */
+
 	private String authToken = "";
-	/**
-	 * User id.
-	 */
+
 	private String userId = "";
-	/**
-	 * Unique id of the customer.
-	 */
+
 	private String customerId = "";
 
-	/**
-	 * Constructs new empty {@code UserContext} instance.
-	 */
+
 	public UserContext() {
 	}
 
