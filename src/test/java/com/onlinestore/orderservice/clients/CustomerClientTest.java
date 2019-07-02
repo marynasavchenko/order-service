@@ -46,14 +46,14 @@ public class CustomerClientTest {
 
 	private String jsonCustomer;
 
-	private List serviceInstanceList;
+	private List<ServiceInstance> serviceInstanceList;
 
 
 	@Before
 	public void setup() throws JsonProcessingException {
 		client = new CustomerClient(discoveryClient, restTemplate);
 		jsonCustomer = objectMapper.writeValueAsString(new Customer(ANY_CUSTOMER_ID, ANY_CUSTOMER_NAME, ANY_CUSTOMER_CITY));
-		serviceInstanceList = new ArrayList<ServiceInstance>();
+		serviceInstanceList = new ArrayList<>();
 		serviceInstanceList.add(new DefaultServiceInstance("", "localhost", 8080, false));
 	}
 
