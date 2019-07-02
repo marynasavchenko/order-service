@@ -15,7 +15,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
-import wiremock.com.fasterxml.jackson.core.JsonProcessingException;
+//import wiremock.com.fasterxml.jackson.core.JsonProcessingException;
+import  com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,8 @@ import static org.mockito.Mockito.when;
 @AutoConfigureWireMock(port = 8080)
 public class CustomerClientTest {
 	private static final String ANY_CUSTOMER_ID = "26";
+	private static final String ANY_CUSTOMER_NAME = "Jane";
+	private static final String ANY_CUSTOMER_CITY = "New York";
 	private static final String CUSTOMER_ID_URI = "/v1/customers/" + ANY_CUSTOMER_ID;
 
 	@Autowired
@@ -48,9 +51,9 @@ public class CustomerClientTest {
 
 
 	@Before
-	public void setup() throws JsonProcessingException, com.fasterxml.jackson.core.JsonProcessingException {
+	public void setup() throws JsonProcessingException {
 		client = new CustomerClient(discoveryClient, restTemplate);
-		jsonCustomer = objectMapper.writeValueAsString(new Customer(ANY_CUSTOMER_ID, "Jane", "New York"));
+		jsonCustomer = objectMapper.writeValueAsString(new Customer(ANY_CUSTOMER_ID, ANY_CUSTOMER_NAME, ANY_CUSTOMER_CITY));
 		serviceInstanceList = new ArrayList<ServiceInstance>();
 		serviceInstanceList.add(new DefaultServiceInstance("", "localhost", 8080, false));
 	}
@@ -64,7 +67,7 @@ public class CustomerClientTest {
 						.withBody(jsonCustomer)));
 
 		Customer customer = this.client.getCustomer(ANY_CUSTOMER_ID);
-		assertThat("New York").isEqualTo(customer.getCustomerAddress());
-		assertThat("Jane").isEqualTo(customer.getCustomerName());
+		assertThat(ANY_CUSTOMER_CITY).isEqualTo(customer.getCustomerAddress());
+		assertThat(ANY_CUSTOMER_NAME).isEqualTo(customer.getCustomerName());
 	}
 }
