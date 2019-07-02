@@ -15,7 +15,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
-//import wiremock.com.fasterxml.jackson.core.JsonProcessingException;
 import  com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@AutoConfigureWireMock(port = 8080)
+@AutoConfigureWireMock
 public class CustomerClientTest {
 	private static final String ANY_CUSTOMER_ID = "26";
 	private static final String ANY_CUSTOMER_NAME = "Jane";
