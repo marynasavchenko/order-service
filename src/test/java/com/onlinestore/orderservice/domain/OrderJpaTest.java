@@ -36,7 +36,7 @@ public class OrderJpaTest {
 		List<ShoppingPosition> shoppingPositionList1 = new LinkedList<>();
 		shoppingPositionList1.add(shoppingPosition1);
 		shoppingPositions = new ShoppingPositions(shoppingPositionList1);
-		orderDate = LocalDate.of(2019, 02, 15);
+		orderDate = LocalDate.of(2019, 2, 15);
 		orderStatus = "";
 	}
 
