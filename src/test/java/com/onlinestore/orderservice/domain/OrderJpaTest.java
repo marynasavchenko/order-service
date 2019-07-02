@@ -25,6 +25,7 @@ public class OrderJpaTest {
 	private BigDecimal price;
 	private ShoppingPositions shoppingPositions;
 	private LocalDate orderDate;
+	private String orderStatus;
 
 	@Before
 	public void setUp() throws Exception {
@@ -36,11 +37,12 @@ public class OrderJpaTest {
 		shoppingPositionList1.add(shoppingPosition1);
 		shoppingPositions = new ShoppingPositions(shoppingPositionList1);
 		orderDate = LocalDate.of(2019, 02, 15);
+		orderStatus = "";
 	}
 
 	@Test
 	public void shouldMapOrderEntity() throws Exception {
-		Order order = this.entityManager.persistAndFlush(new Order (CUSTOMER_ID, orderDate, "", price, OrderState.ACCEPTED, shoppingPositions));
+		Order order = this.entityManager.persistAndFlush(new Order (CUSTOMER_ID, orderDate, orderStatus, price, OrderState.ACCEPTED, shoppingPositions));
 		Assertions.assertThat(order.getOrderId()).isNotNull();
 		Assertions.assertThat(order.getOrderId()).inUnicode();
 	}
