@@ -25,11 +25,12 @@ public class OrderRepositoryTest {
 	private static final String CUSTOMER_ID_2 = "4321";
 
 	@Autowired
-	OrderRepository orderRepository;
+	private OrderRepository orderRepository;
 
 	private Order order1;
 	private Order order2;
 	private Order order3;
+	private String orderStatus;
 
 	@Before
 	public void setUp() throws Exception {
@@ -50,9 +51,10 @@ public class OrderRepositoryTest {
 		ShoppingPositions shoppingPositions3 = new ShoppingPositions(shoppingPositionList3);
 
 		LocalDate orderDate = LocalDate.of(2015, 2, 20);
-		order1 = new Order(CUSTOMER_ID_1, orderDate, "", price1, OrderState.ACCEPTED, shoppingPositions1);
-		order2 = new Order(CUSTOMER_ID_1, orderDate, "", price1, OrderState.ACCEPTED, shoppingPositions2);
-		order3 = new Order(CUSTOMER_ID_2, orderDate, "", price1, OrderState.ACCEPTED, shoppingPositions3);
+		orderStatus = "";
+		order1 = new Order(CUSTOMER_ID_1, orderDate, orderStatus, price1, OrderState.ACCEPTED, shoppingPositions1);
+		order2 = new Order(CUSTOMER_ID_1, orderDate, orderStatus, price1, OrderState.ACCEPTED, shoppingPositions2);
+		order3 = new Order(CUSTOMER_ID_2, orderDate, orderStatus, price1, OrderState.ACCEPTED, shoppingPositions3);
 	}
 
 	@After
@@ -75,7 +77,8 @@ public class OrderRepositoryTest {
 		orderRepository.save(order2);
 		orderRepository.save(order3);
 		Optional<Order> optionalOrder = orderRepository.findByCustomerIdAndOrderId(CUSTOMER_ID_1, order2.getOrderId());
-		assertEquals(order2, optionalOrder.get());
+		Order foundOrder2 = optionalOrder.get();
+		assertEquals(order2, foundOrder2);
 	}
 
 	@Test
