@@ -15,6 +15,8 @@ public class OrderTest {
 	private BigDecimal price;
 	private ShoppingPositions shoppingPositions;
 	private LocalDate orderDate;
+	private String orderStatus;
+	private List<ShoppingPosition> shoppingPositionList;
 
 	@Before
 	public void setUp() throws Exception {
