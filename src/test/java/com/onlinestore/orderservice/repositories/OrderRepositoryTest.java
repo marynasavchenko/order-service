@@ -49,7 +49,7 @@ public class OrderRepositoryTest {
 		shoppingPositionList3.add(shoppingPosition1);
 		ShoppingPositions shoppingPositions3 = new ShoppingPositions(shoppingPositionList3);
 
-		LocalDate orderDate = LocalDate.of(2015, 02, 20);
+		LocalDate orderDate = LocalDate.of(2015, 2, 20);
 		order1 = new Order(CUSTOMER_ID_1, orderDate, "", price1, OrderState.ACCEPTED, shoppingPositions1);
 		order2 = new Order(CUSTOMER_ID_1, orderDate, "", price1, OrderState.ACCEPTED, shoppingPositions2);
 		order3 = new Order(CUSTOMER_ID_2, orderDate, "", price1, OrderState.ACCEPTED, shoppingPositions3);
