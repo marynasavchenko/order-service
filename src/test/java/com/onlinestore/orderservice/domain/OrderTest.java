@@ -22,15 +22,16 @@ public class OrderTest {
 		price = new BigDecimal(1000);
 		ShoppingPosition shoppingPosition1 = new ShoppingPosition("123", item1, 1, price);
 
-		List<ShoppingPosition> shoppingPositionList1 = new LinkedList<>();
-		shoppingPositionList1.add(shoppingPosition1);
-		shoppingPositions = new ShoppingPositions(shoppingPositionList1);
-		orderDate = LocalDate.of(2019, 02, 15);
+		shoppingPositionList = new LinkedList<>();
+		shoppingPositionList.add(shoppingPosition1);
+		shoppingPositions = new ShoppingPositions(shoppingPositionList);
+		orderDate = LocalDate.of(2019, 2, 15);
+		orderStatus = "";
 	}
 
 	@Test
 	public void shouldCreateOrder() throws Exception {
-		Order order = new Order(CUSTOMER_ID, orderDate, "", price, OrderState.ACCEPTED, shoppingPositions);
+		Order order = new Order(CUSTOMER_ID, orderDate, orderStatus, price, OrderState.ACCEPTED, shoppingPositions);
 		assertEquals(CUSTOMER_ID, order.getCustomerId());
 	}
 }
