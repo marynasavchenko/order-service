@@ -42,8 +42,8 @@ public class OrderJpaTest {
 
 	@Test
 	public void shouldMapOrderEntity() throws Exception {
-		Order order = this.entityManager.persistAndFlush(new Order (CUSTOMER_ID, orderDate, orderStatus, price, OrderState.ACCEPTED, shoppingPositions));
-		Assertions.assertThat(order.getOrderId()).isNotNull();
-		Assertions.assertThat(order.getOrderId()).inUnicode();
+		Order orderToSave = new Order(CUSTOMER_ID, orderDate, orderStatus, price, OrderState.ACCEPTED, shoppingPositions);
+		Order foundOrder = this.entityManager.persistAndFlush(orderToSave);
+		Assertions.assertThat(foundOrder.getOrderId()).isNotNull();
 	}
 }
