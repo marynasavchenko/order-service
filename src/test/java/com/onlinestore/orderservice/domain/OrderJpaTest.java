@@ -1,21 +1,22 @@
 package com.onlinestore.orderservice.domain;
 
-import org.assertj.core.api.Assertions;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+@ExtendWith(SpringExtension.class)
 @DataJpaTest
-@RunWith(SpringRunner.class)
 public class OrderJpaTest {
 
 	@Autowired
@@ -27,7 +28,7 @@ public class OrderJpaTest {
 	private LocalDate orderDate;
 	private String orderStatus;
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		Item item1 = new Item("987", "laptop");
 		price = new BigDecimal(1000);
@@ -44,6 +45,6 @@ public class OrderJpaTest {
 	public void shouldMapOrderEntity() throws Exception {
 		Order orderToSave = new Order(CUSTOMER_ID, orderDate, orderStatus, price, OrderState.ACCEPTED, shoppingPositions);
 		Order foundOrder = this.entityManager.persistAndFlush(orderToSave);
-		Assertions.assertThat(foundOrder.getOrderId()).isNotNull();
+		assertThat(foundOrder.getOrderId()).isNotNull();
 	}
 }

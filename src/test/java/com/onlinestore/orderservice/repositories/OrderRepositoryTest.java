@@ -1,14 +1,13 @@
 package com.onlinestore.orderservice.repositories;
 
 import com.onlinestore.orderservice.domain.*;
-import org.assertj.core.api.Assertions;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -16,9 +15,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(SpringRunner.class)
+
+@ExtendWith(SpringExtension.class)
 @DataJpaTest
 public class OrderRepositoryTest {
 	private static final String CUSTOMER_ID_1 = "1234";
@@ -32,7 +33,7 @@ public class OrderRepositoryTest {
 	private Order order3;
 	private String orderStatus;
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		Item item1 = new Item("987", "laptop");
 		BigDecimal price1 = new BigDecimal(1000);
@@ -57,7 +58,7 @@ public class OrderRepositoryTest {
 		order3 = new Order(CUSTOMER_ID_2, orderDate, orderStatus, price1, OrderState.ACCEPTED, shoppingPositions3);
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() throws Exception {
 		orderRepository.deleteAll();
 	}
@@ -66,8 +67,8 @@ public class OrderRepositoryTest {
 	public void shouldFindOrdersByCustomerId() throws Exception {
 		orderRepository.save(order1);
 		List<Order> orders = orderRepository.findByCustomerId(CUSTOMER_ID_1);
-		Assertions.assertThat(orders.size()).isEqualTo(1);
-		Assertions.assertThat(orders.iterator().next().getCustomerId()).isEqualTo(CUSTOMER_ID_1);
+		assertThat(orders.size()).isEqualTo(1);
+		assertThat(orders.iterator().next().getCustomerId()).isEqualTo(CUSTOMER_ID_1);
 		assertEquals(orders.get(0), order1);
 	}
 

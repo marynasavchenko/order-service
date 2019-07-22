@@ -1,14 +1,15 @@
 package com.onlinestore.orderservice.domain;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class OrderTest {
 	private static final String CUSTOMER_ID = "362";
@@ -18,7 +19,7 @@ public class OrderTest {
 	private String orderStatus;
 	private List<ShoppingPosition> shoppingPositionList;
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		Item item1 = new Item("987", "laptop");
 		price = new BigDecimal(1000);

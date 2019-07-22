@@ -5,20 +5,21 @@ import com.onlinestore.orderservice.domain.Customer;
 import com.onlinestore.orderservice.domain.Order;
 import com.onlinestore.orderservice.exceptions.OrderNotFoundException;
 import com.onlinestore.orderservice.repositories.OrderRepository;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Spy;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class OrderServiceImplTest {
 
 	private static final String ANY_ORDER_ID = "741";
@@ -38,7 +39,7 @@ public class OrderServiceImplTest {
 
 	private OrderService orderService;
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		orderService = new OrderServiceImpl(orderRepository, customerClient);
 	}
@@ -65,10 +66,11 @@ public class OrderServiceImplTest {
 		verify(orderRepository).findByCustomerIdAndOrderId(ANY_CUSTOMER_ID, ANY_CUSTOMER_ID);
 	}
 
-	@Test(expected = OrderNotFoundException.class)
+	@Test
 	public void shouldThrowExceptionWhenEmptyOptional() throws Exception {
 		when(orderRepository.findByCustomerIdAndOrderId(ANY_CUSTOMER_ID, ANY_CUSTOMER_ID)).thenReturn(Optional.empty());
-		orderService.getOrder(ANY_CUSTOMER_ID, ANY_CUSTOMER_ID);
+
+		assertThrows(OrderNotFoundException.class, () -> orderService.getOrder(ANY_CUSTOMER_ID, ANY_CUSTOMER_ID));
 	}
 
 	@Test
