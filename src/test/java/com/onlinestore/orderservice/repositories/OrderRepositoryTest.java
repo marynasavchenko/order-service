@@ -68,7 +68,7 @@ public class OrderRepositoryTest {
 		orderRepository.save(order1);
 		List<Order> orders = orderRepository.findByCustomerId(CUSTOMER_ID_1);
 		assertThat(orders.size()).isEqualTo(1);
-		assertThat(orders.iterator().next().getCustomerId()).isEqualTo(CUSTOMER_ID_1);
+		assertThat(orders.get(0).getCustomerId()).isEqualTo(CUSTOMER_ID_1);
 		assertEquals(orders.get(0), order1);
 	}
 
